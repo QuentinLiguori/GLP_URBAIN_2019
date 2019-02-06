@@ -1,5 +1,7 @@
 package perso;
 
+import ville.BatimentCible;
+
 public class Personnage {
 	private String nom;
 	private String prenom;
@@ -7,14 +9,16 @@ public class Personnage {
 	private int positionY;
 	private String sexe;
 	private int age;
-	private String adress;
+	private BatimentCible adress;
 	private Emotion emotion;
 	private Besoin besoin;
 	private Comportement comportement;
 	private ListeAction planningjournee;
 	
-	public Personnage() {
-		
+	public Personnage(String nom, String prenom, String sexe, int age, BatimentCible adress) {
+		positionX = adress.getPositionX();
+		positionY = adress.getPositionY();
+				
 	}
 
 	public int getPositionX() {
