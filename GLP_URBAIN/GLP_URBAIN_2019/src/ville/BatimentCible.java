@@ -9,7 +9,24 @@ public class BatimentCible {
 	private String nom;
 	private int ouverture;
 	private int fermeture;
+	private int valeur;
 	
+	public BatimentCible(String nom, String fonction, int capacite, int capacitemax, int ouverture, int fermeture, int position, int valeur) {
+		this.nom = nom;
+		this.fonction = fonction;
+		this.capacite = capacite;
+		this.capacitemax = capacitemax;
+		this.ouverture = ouverture;
+		this.fermeture = fermeture;
+		this.valeur = valeur;
+		
+	}
+	public int getValeur() {
+		return valeur;
+	}
+	public void setValeur(int valeur) {
+		this.valeur = valeur;
+	}
 	public BatimentCible() {
 		
 	}
