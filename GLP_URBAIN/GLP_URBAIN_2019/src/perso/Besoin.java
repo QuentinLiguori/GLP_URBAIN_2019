@@ -9,8 +9,64 @@ public class Besoin {
 	
 	public Besoin() {
 		
+		faim = 500;
+		energie = 500;
+		divertissement = 500;
+		social = 500;
 	}
-
+	
+	public int faimMaxMin(int faim) {
+		
+		if (faim > 500) {
+			
+			faim = 500;
+		}
+		else if(faim < 0) {
+			
+			faim = 0;
+		}
+		return faim;
+	}
+	
+	public int energieMaxMin(int energie) {
+		
+		if (energie> 500) {
+			
+			energie = 500;
+		}
+		else if(energie < 0) {
+			
+			energie = 0;
+		}
+		return energie;
+	}
+	
+	public int divertissementMaxMin(int divertissement) {
+		
+		if (divertissement > 500) {
+			
+			divertissement = 500;
+		}
+		else if(divertissement < 0) {
+			
+			divertissement = 0;
+		}
+		return divertissement;
+	}
+	
+	public int socialMaxMin(int social) {
+		
+		if (social > 500) {
+			
+			social = 500;
+		}
+		else if(social < 0) {
+			
+			social = 0;
+		}
+		return social;
+	}
+	
 	public int getFaim() {
 		return faim;
 	}

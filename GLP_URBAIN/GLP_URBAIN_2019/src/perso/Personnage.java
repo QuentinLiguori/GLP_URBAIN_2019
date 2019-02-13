@@ -15,9 +15,9 @@ public class Personnage {
 	private Comportement comportement;
 	private ListeAction planningjournee;
 	
-	public Personnage(String nom, String prenom, String sexe, int age, BatimentCible adress) {
-		positionX = adress.getPositionX();
-		positionY = adress.getPositionY();
+	public Personnage(String nom, String prenom, String sexe, int age) {
+		
+		besoin = new Besoin();
 				
 	}
 
@@ -69,13 +69,7 @@ public class Personnage {
 		this.age = age;
 	}
 
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+	
 
 	public Emotion getEmotion() {
 		return emotion;
