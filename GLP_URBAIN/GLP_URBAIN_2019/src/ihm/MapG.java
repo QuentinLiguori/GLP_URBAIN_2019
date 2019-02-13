@@ -1,5 +1,7 @@
 package ihm;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -15,6 +17,7 @@ public class MapG {
 	public MapG() {
 		
 		mapPane = new JPanel();
+		mapPane.setBackground(Color.BLACK);
 		
 	}
 }
