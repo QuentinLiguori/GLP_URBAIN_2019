@@ -1,9 +1,11 @@
 package perso;
 
 import ville.BatimentCible;
-import ville.Deplacement;
-
 public class Action {
+	public Action(String type) {
+		super();
+		this.type = type;
+	}	
 	private String type;
 	
 	public Action() {
@@ -38,6 +40,8 @@ public class Action {
 		}
 	}
 	public void deplacer(int positionPersoX, int positionPersoY, int positionDestinationX,int positionDestinationY) {
-		Deplacement deplace = new Deplacement(int positionPersoX, int positionPersoY, int positionDestinationX,int positionDestinationY);
+	}
+	public String toString() {
+		return "Action [type=" + type + "]";
 	}
 }
