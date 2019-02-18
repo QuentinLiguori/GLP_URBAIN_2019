@@ -10,19 +10,7 @@ public class BatimentCible {
 	private int ouverture;
 	private int fermeture;
 	private int valeur;
-	private int id;
 	
-	public BatimentCible(String nom, String fonction,int id, int capacite, int capacitemax, int ouverture, int fermeture, int valeur) {
-		this.nom = nom;
-		this.fonction = fonction;
-		this.id = id;
-		this.capacite = capacite;
-		this.capacitemax = capacitemax;
-		this.ouverture = ouverture;
-		this.fermeture = fermeture;
-		this.valeur = valeur;
-		
-	}
 	public int getValeur() {
 		return valeur;
 	}
@@ -80,12 +68,5 @@ public class BatimentCible {
 	public void setFermeture(int fermeture) {
 		this.fermeture = fermeture;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	
 }
