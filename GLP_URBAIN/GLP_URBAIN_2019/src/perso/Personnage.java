@@ -18,9 +18,17 @@ public class Personnage {
 	public Personnage(String nom, String prenom, String sexe, int age) {
 		
 		besoin = new Besoin();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+		this.age = age;
 				
 	}
-
+	
+	public String getPrenomNom() {
+		
+		return prenom+" "+ nom;
+	}
 	public int getPositionX() {
 		return positionX;
 	}
@@ -38,6 +46,7 @@ public class Personnage {
 	}
 
 	public String getNom() {
+		
 		return nom;
 	}
 
