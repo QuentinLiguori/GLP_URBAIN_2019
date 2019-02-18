@@ -2,6 +2,7 @@ package ihm;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,10 +33,9 @@ public class MainWindow {
 		besoin = new BesoinG();
 		leftPane = new JPanel();
 		
+		// Ajout des Panels //
 		leftPane.add(action.getActionPane());
-
 		leftPane.add(besoin.getBesoinPane());
-
 		leftPane.add(personnages.getPersonnages());
 		
 		boxLeftPane = new BoxLayout(leftPane,1);
@@ -53,6 +53,8 @@ public class MainWindow {
 		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,leftPane,topPane);
 		mainPane.setDividerLocation(210);
 		mainPane.setDividerSize(0);
+		
+		
 	}
 	
 	public JSplitPane getMainPane() {
@@ -71,13 +73,12 @@ public class MainWindow {
 
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
-		mainFrame.setLocationRelativeTo(null);
 		mainFrame.add(window.getMainPane());
-		mainFrame.setSize(1400,700);
-		mainFrame.setResizable(false);
+		//_mainFrame.pack();
+		mainFrame.setSize(1820,980);
+		mainFrame.setResizable(true);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-	
 }

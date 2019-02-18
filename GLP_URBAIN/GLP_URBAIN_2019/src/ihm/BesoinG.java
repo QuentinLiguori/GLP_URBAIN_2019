@@ -61,5 +61,12 @@ public class BesoinG {
 		
 	}
 	
+	public void updatebesoin(Personnage perso) {
+		
+		energyBar.setValue(perso.getBesoin().getEnergie());
+		entertainmentBar.setValue(perso.getBesoin().getDivertissement());
+		hungerBar.setValue(perso.getBesoin().getFaim());
+		socialBar.setValue(perso.getBesoin().getSocial());
+	}
 	
 }

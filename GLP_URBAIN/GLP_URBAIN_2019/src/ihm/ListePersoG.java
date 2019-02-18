@@ -1,41 +1,49 @@
 package ihm;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import perso.Personnage;
 import world.World;
 
-public class ListePersoG {
+public class ListePersoG implements ActionListener{
 	
 	// Initialize Button and Panel //
-	private JComboBox<String> personnages;
+	private JPanel personnages;
 	private JButton selectbutton;
-	private JLabel perso1;
 	private Personnage perso;
 	private JTextArea text;
 	
-	public JComboBox<String> getPersonnages(){
+	public JPanel getPersonnages(){
 		
 		return personnages;
 	}
 	public ListePersoG() {
 		
-		personnages = new JComboBox<>();
+		personnages = new JPanel();
 		World world = new World();
 		Iterator<Personnage> it = world.getAllCitizens().iterator();
-		
 		while(it.hasNext()) {
 			
-			personnages.addItem(it.next().getNom());
+			JButton perso1 = new JButton();
+			perso1.setText(it.next().getPrenomNom());
+			personnages.add(perso1);
+			perso1.addActionListener(this);
 		}
 		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		
+		//if(e.getSource()==perso1) 
 	}
 
 	
