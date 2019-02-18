@@ -3,10 +3,13 @@ package ihm;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+
+import org.omg.CORBA.INITIALIZE;
 
 public class MainWindow {
 	
@@ -19,7 +22,7 @@ public class MainWindow {
 	private BesoinG besoin;
 	private MapG map;
 	private TopBar topBarpane;
-	private FlowLayout boxLeftPane;
+	private BoxLayout boxLeftPane;
 	
 	public MainWindow() {
 		
@@ -28,13 +31,14 @@ public class MainWindow {
 		personnages = new ListePersoG();
 		besoin = new BesoinG();
 		leftPane = new JPanel();
-		leftPane.add(action.getActionPane());
-		leftPane.add(personnages.getSelectButton());
-		leftPane.add(besoin.getBesoinPane());
 		
+		leftPane.add(action.getActionPane());
+
+		leftPane.add(besoin.getBesoinPane());
+
 		leftPane.add(personnages.getPersonnages());
 		
-		boxLeftPane = new FlowLayout();
+		boxLeftPane = new BoxLayout(leftPane,1);
 		leftPane.setLayout(boxLeftPane);
 		
 		// Initialization of the top panel //
@@ -45,7 +49,7 @@ public class MainWindow {
 		topPane.setDividerLocation(32);
 		topPane.setDividerSize(0);
 		
-		// Initialization of the top panel //
+		// Initialization of the main panel //
 		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,leftPane,topPane);
 		mainPane.setDividerLocation(210);
 		mainPane.setDividerSize(0);
@@ -55,11 +59,16 @@ public class MainWindow {
 		
 		return mainPane;
 	}
+	public static void initialize() {
+		
+		
+	}
 	public static void main(String[] args) {
 		
-		MainWindow window = new MainWindow();
 		
 		// Creation of the window //
+		MainWindow window = new MainWindow();
+
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
 		mainFrame.setLocationRelativeTo(null);
@@ -68,6 +77,7 @@ public class MainWindow {
 		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	
 }

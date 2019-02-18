@@ -23,31 +23,32 @@ public class BesoinG {
 	
 	public BesoinG() {
 		
-		perso = new Personnage("Moulin", "Gerard", "M", 22);
+		
 		// Initialization of the 4 bar to see the shape of the people //
 		energyBar = new JProgressBar();
+		energyBar.setSize(200, 20);
 		energyBar.setMaximum(500);
 		energyBar.setMinimum(0);
 		energyBar.setStringPainted(true);
-		energyBar.setValue(perso.getBesoin().getEnergie());
+		energyBar.setValue(100);
 		
 		entertainmentBar = new JProgressBar();
 		entertainmentBar.setMaximum(500);
 		entertainmentBar.setMinimum(0);
 		entertainmentBar.setStringPainted(true);
-		entertainmentBar.setValue(perso.getBesoin().getDivertissement());
+		entertainmentBar.setValue(100);
 
 		hungerBar = new JProgressBar();
 		hungerBar.setMaximum(500);
 		hungerBar.setMinimum(0);
 		hungerBar.setStringPainted(true);
-		hungerBar.setValue(perso.getBesoin().getFaim());
+		hungerBar.setValue(100);
 
 		socialBar = new JProgressBar();
 		socialBar.setMaximum(500);
 		socialBar.setMinimum(0);
 		socialBar.setStringPainted(true);
-		socialBar.setValue(perso.getBesoin().getSocial());
+		socialBar.setValue(100);
 
 		besoinPane = new JPanel();
 		besoinPane.add(energyBar);
