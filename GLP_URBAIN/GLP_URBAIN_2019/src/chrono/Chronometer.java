@@ -1,25 +1,28 @@
 package chrono;
 
 /**
- * The chronometer class is composed of the three cyclic counters. We can count
- * until 23 hours 59 minutes and 59 seconds.
+ * The chronometer class is composed of the three cyclic counters. We can count until 23 hours 59 minutes and 59
+ * seconds.
  * 
  * @author Tianxiao.Liu@u-cergy.fr
  **/
 public class Chronometer {
+	private CyclicCounter day = new CyclicCounter(0, 6, 0);
 	private CyclicCounter hour = new CyclicCounter(0, 23, 0);
 	private CyclicCounter minute = new CyclicCounter(0, 59, 0);
 	private CyclicCounter second = new CyclicCounter(0, 59, 0);
-
+	
 	public void increment() {
 		second.increment();
 		if (second.getValue() == 0) {
 			minute.increment();
 			if (minute.getValue() == 0) {
-				hour.increment();
+				hour.increment();			
+				if (hour.getValue() == 0) {
+					day.increment();
+				}
 			}
 		}
-
 	}
 
 	public void decrement() {
@@ -32,6 +35,10 @@ public class Chronometer {
 		}
 	}
 
+	public CyclicCounter getDay() {
+		return day;
+	}
+	
 	public CyclicCounter getHour() {
 		return hour;
 	}
@@ -45,7 +52,9 @@ public class Chronometer {
 	}
 
 	public String toString() {
-		return hour.toString() + " : " + minute.toString() + " : " + second.toString();
+		String result = "";
+		result = hour.toString() + " : " + minute.toString() + " : " + second.toString();
+		return result;
 	}
 
 	public static String transform(int value) {
@@ -59,6 +68,7 @@ public class Chronometer {
 	}
 
 	public void init() {
+		day.setValue(0);
 		hour.setValue(0);
 		minute.setValue(0);
 		second.setValue(0);
