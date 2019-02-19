@@ -1,8 +1,10 @@
 package ville;
 
+import donnee.Point;
+
 public class BatimentCible {
-	private int positionX;
-	private int positionY;
+	private Point hautGauche;
+	private Point basDroite;
 	private String fonction;
 	private int capacite;
 	private int capacitemax;
@@ -11,6 +13,18 @@ public class BatimentCible {
 	private int fermeture;
 	private int valeur;
 	
+	public BatimentCible(String nom, String fonction, int capacite, int capacitemax, int ouverture, int fermeture, Point hautGauche, Point basDroite, int valeur) {
+		this.nom = nom;
+		this.fonction = fonction;
+		this.capacite = capacite;
+		this.capacitemax = capacitemax;
+		this.ouverture = ouverture;
+		this.fermeture = fermeture;
+		this.valeur = valeur;
+		this.basDroite = basDroite;
+		this.hautGauche = hautGauche;
+		
+	}
 	public int getValeur() {
 		return valeur;
 	}
@@ -20,17 +34,18 @@ public class BatimentCible {
 	public BatimentCible() {
 		
 	}
-	public int getPositionX() {
-		return positionX;
+	
+	public Point getHautGauche() {
+		return hautGauche;
 	}
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
+	public void setHautGauche(Point hautGauche) {
+		this.hautGauche = hautGauche;
 	}
-	public int getPositionY() {
-		return positionY;
+	public Point getBasDroite() {
+		return basDroite;
 	}
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
+	public void setBasDroite(Point basDroite) {
+		this.basDroite = basDroite;
 	}
 	public String getFonction() {
 		return fonction;
