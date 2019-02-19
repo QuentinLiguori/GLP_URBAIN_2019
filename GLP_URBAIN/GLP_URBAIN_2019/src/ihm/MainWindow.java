@@ -13,7 +13,7 @@ import javax.swing.JSplitPane;
 
 import org.omg.CORBA.INITIALIZE;
 
-public class MainWindow {
+public class MainWindow implements Runnable{
 	
 	private JPanel leftPane;
 	private JSplitPane topPane;
@@ -32,7 +32,6 @@ public class MainWindow {
 		
 		// Initialization of the left panel //
 		menu = new Menu();
-		menuPane = menu.getMenu();
 		action = new ActionG();
 		personnages = new ListePersoG();
 		besoin = new BesoinG();
@@ -59,6 +58,14 @@ public class MainWindow {
 		mainPane.setDividerLocation(210);
 		mainPane.setDividerSize(0);
 		
+		mainFrame = new JFrame();
+		mainFrame.setTitle("Urbain");
+		mainFrame.add(getMainPane());
+		mainFrame.setSize(1820,980);
+		mainFrame.setResizable(true);
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 	}
 	
@@ -70,24 +77,6 @@ public class MainWindow {
 		
 		
 	}
-	public static void main(String[] args) {
-		
-		
-		// Creation of the window //
-		MainWindow window = new MainWindow();
-
-		mainFrame = new JFrame();
-		mainFrame.setTitle("Urbain");
-		//mainFrame.add(window.getMenuPane());
-		mainFrame.add(window.getMainPane());
-		//_mainFrame.pack();
-		mainFrame.setSize(1820,980);
-		mainFrame.setResizable(true);
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-	}
-
 	public JPanel getMenuPane() {
 		return menuPane;
 	}
@@ -95,4 +84,8 @@ public class MainWindow {
 	public void setMenuPane(JPanel menuPane) {
 		this.menuPane = menuPane;
 	}
+	public void run() {
+		topBarpane.start();	
+	}
+	
 }
