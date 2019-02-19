@@ -24,6 +24,15 @@ public class Personnage {
 		this.age = age;
 				
 	}
+	public Personnage(String nom, String prenom, String sexe, int age, int energy, int divertissement, int social, int hunger) {
+		
+		besoin = new Besoin(hunger, energy, divertissement, social);
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+		this.age = age;
+				
+	}
 	
 	public String getPrenomNom() {
 		

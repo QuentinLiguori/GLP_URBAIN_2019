@@ -14,6 +14,13 @@ public class Besoin {
 		divertissement = 500;
 		social = 500;
 	}
+	public Besoin(int faim,int energie,int divertissement,int social) {
+		
+		this.faim = faim;
+		this.divertissement = divertissement;
+		this.energie = energie;
+		this.social = social;
+	}
 	
 	public int faimMaxMin(int faim) {
 		
