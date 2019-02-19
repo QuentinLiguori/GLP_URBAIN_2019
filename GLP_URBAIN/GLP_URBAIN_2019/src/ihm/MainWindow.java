@@ -1,17 +1,9 @@
 package ihm;
 
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
-
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
-import org.omg.CORBA.INITIALIZE;
 
 public class MainWindow implements Runnable{
 	
@@ -21,7 +13,6 @@ public class MainWindow implements Runnable{
 	private static JFrame mainFrame;
 	private ActionG action;
 	private ListePersoG personnages;
-	private BesoinG besoin;
 	private MapG map;
 	private TopBar topBarpane;
 	private BoxLayout boxLeftPane;
@@ -34,7 +25,6 @@ public class MainWindow implements Runnable{
 		menu = new Menu();
 		action = new ActionG();
 		personnages = new ListePersoG();
-		besoin = new BesoinG();
 		leftPane = new JPanel();
 		
 		// Ajout des Panels //
