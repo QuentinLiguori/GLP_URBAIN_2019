@@ -1,20 +1,24 @@
 package ihm;
 
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+
+import ville.BatimentCible;
+import ville.PlanVille;
 
 public class ActionG implements ActionListener {
 	private JPanel actionPane;
 	private JComboBox<String> batiment;
 	private JComboBox<String> action;
 	private GridLayout box;
-	
+	private PlanVille plan;
 	public JPanel getActionPane() {
 		
 		return actionPane;
@@ -23,6 +27,7 @@ public class ActionG implements ActionListener {
 		
 		actionPane = new JPanel();
 		
+		plan = new PlanVille();
 		batiment = new JComboBox<String>();
 		batiment.addItem("Liste de batiment");
 		
@@ -61,13 +66,16 @@ public class ActionG implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == action) {
-			System.out.println("test");
 
 			if(action.getSelectedItem().equals("Manger")) {
-				System.out.println("test1");
 				batiment.removeAllItems();
-				batiment.addItem("Chez gino");
-				batiment.addItem("Brasserie");
+				Set cles = plan.getBatiments().keySet();
+				Iterator it = cles.iterator();
+				while (it.hasNext()){
+				   Object cle = it.next(); // tu peux typer plus finement ici
+				   BatimentCible valeur = plan.getBatiments().get(cle);
+				   batiment.addItem(valeur.getNom());
+				}
 				
 			}
 			else if(action.getSelectedItem().equals("Se divertir")) {

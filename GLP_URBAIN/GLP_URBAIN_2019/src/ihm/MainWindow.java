@@ -1,5 +1,6 @@
 package ihm;
 
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
@@ -24,10 +25,14 @@ public class MainWindow {
 	private MapG map;
 	private TopBar topBarpane;
 	private BoxLayout boxLeftPane;
+	private Menu menu;
+	private JPanel menuPane;
 	
 	public MainWindow() {
 		
 		// Initialization of the left panel //
+		menu = new Menu();
+		menuPane = menu.getMenu();
 		action = new ActionG();
 		personnages = new ListePersoG();
 		besoin = new BesoinG();
@@ -35,7 +40,7 @@ public class MainWindow {
 		
 		// Ajout des Panels //
 		leftPane.add(action.getActionPane());
-		leftPane.add(besoin.getBesoinPane());
+		leftPane.add(personnages.getBesoinPane());
 		leftPane.add(personnages.getPersonnages());
 		
 		boxLeftPane = new BoxLayout(leftPane,1);
@@ -73,6 +78,7 @@ public class MainWindow {
 
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
+		//mainFrame.add(window.getMenuPane());
 		mainFrame.add(window.getMainPane());
 		//_mainFrame.pack();
 		mainFrame.setSize(1820,980);
@@ -80,5 +86,13 @@ public class MainWindow {
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+	}
+
+	public JPanel getMenuPane() {
+		return menuPane;
+	}
+
+	public void setMenuPane(JPanel menuPane) {
+		this.menuPane = menuPane;
 	}
 }
