@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
@@ -69,26 +70,43 @@ public class ActionG implements ActionListener {
 
 			if(action.getSelectedItem().equals("Manger")) {
 				batiment.removeAllItems();
-				Set cles = plan.getBatiments().keySet();
-				Iterator it = cles.iterator();
-				while (it.hasNext()){
-				   Object cle = it.next(); // tu peux typer plus finement ici
-				   BatimentCible valeur = plan.getBatiments().get(cle);
-				   batiment.addItem(valeur.getNom());
-				}
-				
+				for(int i = 0; i < plan.getBatiments().size() ; i++) {
+		            
+					if(plan.getBatiments().get(i).getFonction().equals("Manger")) {
+						
+						batiment.addItem(plan.getBatiments().get(i).getNom());
+					}
+		        }	
 			}
 			else if(action.getSelectedItem().equals("Se divertir")) {
 				batiment.removeAllItems();
-
+				for(int i = 0; i < plan.getBatiments().size() ; i++) {
+		            
+					if(plan.getBatiments().get(i).getFonction().equals("Detente")) {
+						
+						batiment.addItem(plan.getBatiments().get(i).getNom());
+					}
+		        }
 			}
 			else if(action.getSelectedItem().equals("Dormir")) {
 				batiment.removeAllItems();
-
+				for(int i = 0; i < plan.getBatiments().size() ; i++) {
+		            
+					if(plan.getBatiments().get(i).getFonction().equals("Habitation")) {
+						
+						batiment.addItem(plan.getBatiments().get(i).getNom());
+					}
+		        }
 			}
 			else if(action.getSelectedItem().equals("Social")) {
 				batiment.removeAllItems();
-
+				for(int i = 0; i < plan.getBatiments().size() ; i++) {
+		            
+					if(plan.getBatiments().get(i).getFonction().equals("Social")) {
+						
+						batiment.addItem(plan.getBatiments().get(i).getNom());
+					}
+		        }
 			}
 		}
 	}

@@ -30,6 +30,10 @@ public class ListePersoG implements ActionListener{
 	private BoxLayout box;
 	private World world;
 	private Iterator<Personnage> it;
+	private JLabel energie;
+	private JLabel divertissement;
+	private JLabel faim;
+	private JLabel social;
 	
 	public JPanel getBesoinPane() {
 		
@@ -80,9 +84,19 @@ public class ListePersoG implements ActionListener{
 		socialBar.setValue(100);
 
 		besoinPane = new JPanel();
+		
+		energie = new JLabel("Energie");
+		divertissement = new JLabel("Divertissement");
+		faim = new JLabel("Faim");
+		social = new JLabel("Social");
+		
+		besoinPane.add(energie);
 		besoinPane.add(energyBar);
+		besoinPane.add(divertissement);
 		besoinPane.add(entertainmentBar);
+		besoinPane.add(faim);
 		besoinPane.add(hungerBar);
+		besoinPane.add(social);
 		besoinPane.add(socialBar);
 		
 		box = new BoxLayout(besoinPane, 1);
