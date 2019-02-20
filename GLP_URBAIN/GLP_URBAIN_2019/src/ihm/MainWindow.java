@@ -39,7 +39,7 @@ public class MainWindow implements Runnable{
 		map = new MapG();
 		topBarpane = new TopBar();
 
-		topPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topBarpane.getTopBarPane(),map.getMapPane());
+		topPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topBarpane.getTopBarPane(),map);
 		topPane.setDividerLocation(32);
 		topPane.setDividerSize(0);
 		
@@ -79,3 +79,4 @@ public class MainWindow implements Runnable{
 	}
 	
 }
+
