@@ -26,19 +26,20 @@ public class MapG extends JPanel {
 
 	public MapG() {
 		mapPane = new JPanel();
-		mapPane.setBackground(Color.darkGray);
+		this.setBackground(Color.DARK_GRAY);
+		
 
 		
 	}
 	public void paintComponent(Graphics g) {
 		
 		try {
-			this.image1 = ImageIO.read(new File("src/maison4.jpg"));
-			this.image2 = ImageIO.read(new File("src/maison5.jpg"));
-			this.image3 = ImageIO.read(new File("src/toitImmeuble01.jpg"));
-			this.image4 = ImageIO.read(new File("src/maison8.jpg"));
-			this.image5 = ImageIO.read(new File("src/maison7.jpg"));
-			this.image6 = ImageIO.read(new File("src/maison.jpg"));
+			this.image1 = ImageIO.read(new File("pictures/maison4.jpg"));
+			this.image2 = ImageIO.read(new File("pictures/maison5.jpg"));
+			this.image3 = ImageIO.read(new File("pictures/toitImmeuble01.jpg"));
+			this.image4 = ImageIO.read(new File("pictures/maison8.jpg"));
+			this.image5 = ImageIO.read(new File("pictures/maison7.jpg"));
+			this.image6 = ImageIO.read(new File("pictures/maison.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,8 +71,6 @@ public class MapG extends JPanel {
 		g.drawImage(image5,1080, 450, 180, 100,this);
 		g.drawImage(image2,840, 590, 180, 100,this);
 		g.drawImage(image1,1080, 590, 180, 100,this);
-		
-		
 		
 		
 	}
