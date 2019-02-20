@@ -105,6 +105,13 @@ public class Besoin {
 	public void setSocial(int social) {
 		this.social = social;
 	}
-
+	public void updateBesoin(int temps) {
+		if(temps <= 5) {
+			setFaim(getFaim() - 1);
+			setDivertissement(getDivertissement() - 1);
+			setSocial(getSocial() - 1);
+			setEnergie(getEnergie() - 1);
+		}
+	}
 	
 }
