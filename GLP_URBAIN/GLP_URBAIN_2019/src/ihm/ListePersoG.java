@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import perso.Personnage;
 import world.World;
 
-public class ListePersoG implements ActionListener{
+public class ListePersoG extends Thread implements ActionListener{
 	
 	// Initialize Button and Panel //
 	private JPanel personnages;
@@ -34,6 +34,8 @@ public class ListePersoG implements ActionListener{
 	private JLabel divertissement;
 	private JLabel faim;
 	private JLabel social;
+	 public static final int CHRONO_SPEED = 1000;
+	 public boolean stop = false;
 	
 	public JPanel getBesoinPane() {
 		
@@ -59,7 +61,7 @@ public class ListePersoG implements ActionListener{
         }
 		
 		energyBar = new JProgressBar();
-		energyBar.setSize(200, 20);
+		energyBar.setSize(200, 100);
 		energyBar.setMaximum(500);
 		energyBar.setMinimum(0);
 		energyBar.setStringPainted(true);
@@ -131,10 +133,28 @@ public class ListePersoG implements ActionListener{
 			updateBesoin(world.getAllCitizens().get(2));
 		}
 	}
-	
-
-	
-
-
-	
+	public void lastSelected() {
+		
+		
+	}
+	public void run() {
+		int temps = 0;
+        while (!stop) {
+            try {
+                Thread.sleep(CHRONO_SPEED);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+            if(!stop) {  
+            	for(int i = 0; i < world.getAllCitizens().size() ; i++) {
+                    world.getAllCitizens().get(i).getBesoin().updateBesoin(temps);
+//                    updateBesoin(world.getAllCitizens().get(i));
+                }
+            	temps++;
+            	if(temps > 5) {
+        			temps = 0;
+        		}
+            }
+        }
+    }	
 }
