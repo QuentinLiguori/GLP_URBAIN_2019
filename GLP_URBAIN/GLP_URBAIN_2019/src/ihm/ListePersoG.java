@@ -1,17 +1,21 @@
 package ihm;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 
 import perso.Personnage;
 import world.World;
@@ -20,7 +24,7 @@ public class ListePersoG extends Thread implements ActionListener{
 	
 	// Initialize Button and Panel //
 	private JPanel personnages;
-	private JButton persoButton[];
+	private JButton selectButton;
 	private Personnage perso;
 	private JPanel besoinPane;
 	private JProgressBar energyBar;
@@ -34,6 +38,10 @@ public class ListePersoG extends Thread implements ActionListener{
 	private JLabel divertissement;
 	private JLabel faim;
 	private JLabel social;
+	private DefaultListModel<String> listModel;
+	private JList<String> listPerso;
+	private JScrollPane listScroller;
+	private int index;
 	 public static final int CHRONO_SPEED = 1000;
 	 public boolean stop = false;
 	
@@ -48,17 +56,30 @@ public class ListePersoG extends Thread implements ActionListener{
 	}
 	public ListePersoG() {
 		
+		index = -1;
 		personnages = new JPanel();
 		world = new World();
-		persoButton = new JButton[world.getAllCitizens().size()];
+		selectButton = new JButton("Selectionner");
+		selectButton.addActionListener(this);
+		
+		listModel = new DefaultListModel<String>();
 		
 		for(int i = 0; i < world.getAllCitizens().size() ; i++) {
             
-			persoButton[i] = new JButton();
-            persoButton[i].setText(world.getAllCitizens().get(i).getPrenomNom());
-            personnages.add(persoButton[i]);
-            persoButton[i].addActionListener(this);
+			listModel.addElement(world.getAllCitizens().get(i).getPrenomNom());
         }
+		
+		listPerso = new JList<String>(listModel);
+		listPerso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listPerso.setLayoutOrientation(JList.VERTICAL);
+		
+		
+		listScroller = new JScrollPane(listPerso);
+		listScroller.setPreferredSize(new Dimension(250, 250));
+		
+		personnages.add(listScroller);
+		personnages.add(selectButton);
+		
 		
 		energyBar = new JProgressBar();
 		energyBar.setSize(200, 100);
@@ -120,17 +141,9 @@ public class ListePersoG extends Thread implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == persoButton[0]) {
-			
-			updateBesoin(world.getAllCitizens().get(0));
-		}
-		if(e.getSource() == persoButton[1]) {
-			
-			updateBesoin(world.getAllCitizens().get(1));
-		}
-		if(e.getSource() == persoButton[2]) {
-			
-			updateBesoin(world.getAllCitizens().get(2));
+		index = listPerso.getSelectedIndex();
+		if(e.getSource() == selectButton) {
+			updateBesoin(world.getAllCitizens().get(index));
 		}
 	}
 	public void lastSelected() {
@@ -146,10 +159,13 @@ public class ListePersoG extends Thread implements ActionListener{
                 System.out.println(e.getMessage());
             }
             if(!stop) {  
+            	
             	for(int i = 0; i < world.getAllCitizens().size() ; i++) {
                     world.getAllCitizens().get(i).getBesoin().updateBesoin(temps);
-//                    updateBesoin(world.getAllCitizens().get(i));
-                }
+            	}
+            	if (index != -1) {
+            		updateBesoin(world.getAllCitizens().get(index));
+            	}
             	temps++;
             	if(temps > 5) {
         			temps = 0;
