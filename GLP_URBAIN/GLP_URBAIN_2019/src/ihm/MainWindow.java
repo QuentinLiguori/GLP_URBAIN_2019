@@ -45,14 +45,14 @@ public class MainWindow implements Runnable{
 		
 		// Initialization of the main panel //
 		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,leftPane,topPane);
-		mainPane.setDividerLocation(210);
+		mainPane.setDividerLocation(250);
 		mainPane.setDividerSize(0);
 		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
 		mainFrame.add(getMainPane());
-		mainFrame.setSize(1820,980);
-		mainFrame.setResizable(true);
+		mainFrame.setSize(1870,980);
+		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -76,6 +76,7 @@ public class MainWindow implements Runnable{
 	}
 	public void run() {
 		topBarpane.start();	
+		personnages.start();
 	}
 	
 }
