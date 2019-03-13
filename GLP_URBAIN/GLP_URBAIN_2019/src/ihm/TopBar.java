@@ -54,7 +54,7 @@ public class TopBar extends Thread{
 	    public void run() {
 	        while (!stop) {
 	            try {
-	                Thread.sleep(CHRONO_SPEED);
+	                Thread.sleep(SimuPara.SIMULATION_SPEED);
 	            } catch (InterruptedException e) {
 	                System.out.println(e.getMessage());
 	            }

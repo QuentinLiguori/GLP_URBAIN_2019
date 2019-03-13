@@ -141,7 +141,7 @@ public class ListePersoG extends Thread implements ActionListener{
 		int temps = 0;
         while (!stop) {
             try {
-                Thread.sleep(CHRONO_SPEED);
+                Thread.sleep(SimuPara.SIMULATION_SPEED);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
