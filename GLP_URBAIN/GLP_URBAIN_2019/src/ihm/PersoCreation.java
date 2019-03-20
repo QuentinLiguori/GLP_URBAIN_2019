@@ -115,6 +115,8 @@ public class PersoCreation implements ActionListener{
 		
 		aleatoire = new JButton();
 		aleatoire.setText("Créer un personnage aléatoirement");
+		aleatoire.addActionListener(this);
+		
 		bottomRight = new JPanel();
 		bottomRight.add(aleatoire);
 		persCreationPane.add(bottomRight);

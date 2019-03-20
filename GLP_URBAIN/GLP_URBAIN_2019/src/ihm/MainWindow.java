@@ -1,11 +1,17 @@
 package ihm;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-public class MainWindow implements Runnable{
+import perso.Action;
+import ville.PlanVille;
+
+public class MainWindow implements Runnable, ActionListener{
 	
 	private JPanel leftPane;
 	private JSplitPane topPane;
@@ -18,11 +24,18 @@ public class MainWindow implements Runnable{
 	private BoxLayout boxLeftPane;
 	private Menu menu;
 	private JPanel menuPane;
+	private PersoCreation persoCreation;
+	private Action act;
+	private PlanVille ville;
 	
 	public MainWindow() {
 		
 		// Initialization of the left panel //
+		ville = new PlanVille();
 		menu = new Menu();
+		act = new Action();
+		persoCreation = new PersoCreation();
+		
 		action = new ActionG();
 		personnages = new ListePersoG();
 		leftPane = new JPanel();
@@ -43,6 +56,8 @@ public class MainWindow implements Runnable{
 		topPane.setDividerLocation(32);
 		topPane.setDividerSize(0);
 		
+		action.getSelect().addActionListener(this);
+		menu.getJouer().addActionListener(this);
 		// Initialization of the main panel //
 		mainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,leftPane,topPane);
 		mainPane.setDividerLocation(250);
@@ -50,7 +65,8 @@ public class MainWindow implements Runnable{
 		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
-		mainFrame.add(getMainPane());
+		mainFrame.add(mainPane); //ligne à changer pour afficher tout le main window
+		
 		mainFrame.setSize(1870,980);
 		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
@@ -77,6 +93,36 @@ public class MainWindow implements Runnable{
 	public void run() {
 		topBarpane.start();	
 		personnages.start();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == menu.getJouer()) {
+		}
+		else if(e.getSource() == action.getSelect()) {
+			if(action.getAction().getSelectedItem().equals("Manger")) {
+				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.manger(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+			}
+		}
+		else if(e.getSource() == action.getSelect()) {
+			if(action.getAction().getSelectedItem().equals("Dormir")) {
+				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.dormir(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+			}
+		}
+		else if(e.getSource() == action.getSelect()) {
+			if(action.getAction().getSelectedItem().equals("Se dirvertir")) {
+				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.divertir(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+			}
+		}
+		else if(e.getSource() == action.getSelect()) {
+			if(action.getAction().getSelectedItem().equals("Social")) {
+				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.social(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+			}
+		}
 	}
 	
 }

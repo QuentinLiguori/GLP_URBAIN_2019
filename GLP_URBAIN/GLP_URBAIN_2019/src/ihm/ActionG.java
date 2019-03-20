@@ -20,6 +20,8 @@ public class ActionG implements ActionListener {
 	private JComboBox<String> action;
 	private GridLayout box;
 	private PlanVille plan;
+	private JButton select;
+	
 	public JPanel getActionPane() {
 		
 		return actionPane;
@@ -38,21 +40,30 @@ public class ActionG implements ActionListener {
 		action.addItem("Se divertir");
 		action.addItem("Social");
 		
-		action.setSize(200, 20);
-		batiment.setSize(200, 20);
-
+		action.setSize(100, 20);
+		batiment.setSize(100, 20);
+		
+		select = new JButton();
+		select.setText("Selectionner");
+		
 		
 		action.addActionListener(this);
 		batiment.addActionListener(this);
 		
 		actionPane.add(action);
 		actionPane.add(batiment);
-
+		actionPane.add(select);
 		
 		box = new GridLayout(8,1);
 		actionPane.setLayout(box);
 	}
 	
+	public JButton getSelect() {
+		return select;
+	}
+	public void setSelect(JButton select) {
+		this.select = select;
+	}
 	public JComboBox<String> getBatiment() {
 		return batiment;
 	}
@@ -108,6 +119,10 @@ public class ActionG implements ActionListener {
 					}
 		        }
 			}
+		}
+		else if(e.getSource() == select) {
+			
+			
 		}
 	}
 }

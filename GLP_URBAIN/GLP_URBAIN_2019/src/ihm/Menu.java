@@ -37,14 +37,19 @@ public class Menu implements ActionListener, Runnable{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == jouer) {
-			
-		}
 		if(e.getSource() == quitter) {
 			
 			System.exit(0);
 		}
 		
+	}
+
+	public JButton getJouer() {
+		return jouer;
+	}
+
+	public void setJouer(JButton jouer) {
+		this.jouer = jouer;
 	}
 
 	@Override

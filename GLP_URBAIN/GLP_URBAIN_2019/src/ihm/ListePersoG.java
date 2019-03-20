@@ -18,11 +18,12 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
 import perso.Personnage;
-import world.World;
+
 
 public class ListePersoG extends Thread implements ActionListener{
 	
 	// Initialize Button and Panel //
+	
 	private JPanel personnages;
 	private JButton selectButton;
 	private Personnage perso;
@@ -32,7 +33,7 @@ public class ListePersoG extends Thread implements ActionListener{
 	private JProgressBar hungerBar;
 	private JProgressBar socialBar;
 	private BoxLayout box;
-	private World world;
+	private PersoCreation persoCrea;
 	private Iterator<Personnage> it;
 	private JLabel energie;
 	private JLabel divertissement;
@@ -56,17 +57,18 @@ public class ListePersoG extends Thread implements ActionListener{
 	}
 	public ListePersoG() {
 		
+		persoCrea = new PersoCreation();
 		index = -1;
 		personnages = new JPanel();
-		world = new World();
+		
 		selectButton = new JButton("Selectionner");
 		selectButton.addActionListener(this);
 		
 		listModel = new DefaultListModel<String>();
 		
-		for(int i = 0; i < world.getAllCitizens().size() ; i++) {
+		for(int i = 0; i < persoCrea.getWorld().getAllCitizens().size() ; i++) {
             
-			listModel.addElement(world.getAllCitizens().get(i).getPrenomNom());
+			listModel.addElement(persoCrea.getWorld().getAllCitizens().get(i).getPrenomNom());
         }
 		
 		listPerso = new JList<String>(listModel);
@@ -126,6 +128,14 @@ public class ListePersoG extends Thread implements ActionListener{
 		besoinPane.setLayout(box);
 	}
 	
+	public JList<String> getListPerso() {
+		return listPerso;
+	}
+
+	public void setListPerso(JList<String> listPerso) {
+		this.listPerso = listPerso;
+	}
+
 	public void updateBesoin(Personnage perso) {
 		
 		energyBar.setValue(perso.getBesoin().getEnergie());
@@ -143,7 +153,7 @@ public class ListePersoG extends Thread implements ActionListener{
 		
 		index = listPerso.getSelectedIndex();
 		if(e.getSource() == selectButton) {
-			updateBesoin(world.getAllCitizens().get(index));
+			updateBesoin(persoCrea.getWorld().getAllCitizens().get(index));
 		}
 	}
 	public void lastSelected() {
@@ -160,11 +170,11 @@ public class ListePersoG extends Thread implements ActionListener{
             }
             if(!stop) {  
             	
-            	for(int i = 0; i < world.getAllCitizens().size() ; i++) {
-                    world.getAllCitizens().get(i).getBesoin().updateBesoin(temps);
+            	for(int i = 0; i < persoCrea.getWorld().getAllCitizens().size() ; i++) {
+            		persoCrea.getWorld().getAllCitizens().get(i).getBesoin().updateBesoin(temps);
             	}
             	if (index != -1) {
-            		updateBesoin(world.getAllCitizens().get(index));
+            		updateBesoin(persoCrea.getWorld().getAllCitizens().get(index));
             	}
             	temps++;
             	if(temps > 5) {
