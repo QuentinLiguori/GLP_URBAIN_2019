@@ -39,9 +39,9 @@ public class Action {
 			perso.setBesoin(bes);			
 		}
 	}
-	public void deplacer(int positionPersoX, int positionPersoY, int positionDestinationX,int positionDestinationY) {
-		positionPersoX = positionDestinationX;
-		positionPersoY = positionDestinationY;
+	public void deplacer(BatimentCible bat, Personnage perso) {
+		perso.setPositionX(bat.getPosXporte());
+		perso.setPositionY(bat.getPosYporte());
 	}
 	public String toString() {
 		return "Action [type=" + type + "]";
