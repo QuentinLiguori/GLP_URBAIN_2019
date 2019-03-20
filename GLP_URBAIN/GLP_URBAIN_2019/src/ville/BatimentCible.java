@@ -12,8 +12,10 @@ public class BatimentCible {
 	private int ouverture;
 	private int fermeture;
 	private int valeur;
+	private int posXporte;
+	private int posYporte;
 	
-	public BatimentCible(String nom, String fonction, int capacite, int capacitemax, int ouverture, int fermeture, Point hautGauche, Point basDroite, int valeur) {
+	public BatimentCible(String nom, String fonction, int capacite, int capacitemax, int ouverture, int fermeture, Point hautGauche, Point basDroite, int valeur,int posXporte,int posYporte) {
 		this.nom = nom;
 		this.fonction = fonction;
 		this.capacite = capacite;
@@ -23,6 +25,8 @@ public class BatimentCible {
 		this.valeur = valeur;
 		this.basDroite = basDroite;
 		this.hautGauche = hautGauche;
+		this.posXporte = posXporte;
+		this.posYporte = posYporte;
 		
 	}
 	public int getValeur() {
