@@ -1,18 +1,17 @@
 package perso;
 
-import java.util.Iterator;
-
+import java.util.Stack;
 public class ListeAction {
 	  private DeList fst, lst ; // First and last cell
 	  public ListeAction(){
 		  fst = lst = null ; 
 	  }
 
-	  protected boolean isEmpty() { 
+	  public boolean isEmpty() { 
 		  return fst == null ;
 	  }
 
-	  protected void addFirst(Action x) {
+	  public void addFirst(Action x) {
 	    fst = new DeList(x, fst, null) ;
 	    if (lst == null) {
 	      lst = fst ;
@@ -21,7 +20,7 @@ public class ListeAction {
 	    }
 	  }
 
-	  protected void addLast(Action x) {
+	  public void addLast(Action x) {
 	    lst = new DeList(x, null, lst) ;
 	    if (fst == null) {
 	      fst = lst ;
@@ -30,7 +29,7 @@ public class ListeAction {
 	    }
 	  }
 
-	  protected Action removeFirst() {
+	  public Action removeFirst() {
 	    if (fst == null) throw new Error ("removeFirst: empty List") ;
 	    Action r = fst.val ;
 	    fst = fst.next ;
@@ -42,7 +41,7 @@ public class ListeAction {
 	    return r ;
 	  }
 
-	  protected Action removeLast() {
+	  public Action removeLast() {
 	    if (lst == null) throw new Error ("removeLast: empty List") ;
 	    Action r = lst.val ;
 	    lst = lst.prev ;
@@ -52,5 +51,22 @@ public class ListeAction {
 	      lst.next = null ;
 	    }
 	    return r ;
+	  }
+	  ///////////////////////Avec Stack ///////////////////////////
+	  Stack<Action> stack = new Stack<Action>();
+	  
+	  public void add(Action action) {
+		  stack.push(action);
+	  }
+	  public void remove(){
+		  stack.pop();
+	  }
+	  public void see(){
+		  stack.peek();
+	  }
+	  public int search(Action action) {
+		  int res;
+		  res = stack.search(action);
+		  return res;
 	  }
 }
