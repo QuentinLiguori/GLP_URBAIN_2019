@@ -2,11 +2,7 @@ package ville;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.NoSuchElementException;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
-
-import data.Point;
+import donnee.Point;
 
 public class PlanVille {
 	private ArrayList<BatimentCible> batiments;
@@ -195,20 +191,7 @@ public class PlanVille {
 		
 		
 	}
-	public BatimentCible searchBat(String name) throws NoSuchElementException {
-		BatimentCible result = null;
-		for (BatimentCible b : batiments) {
-			if (b.getNom().equals(name)) {
-				result = b;
-			}
-		}
-		if (result == null) {
-			throw new NoSuchElementException("Bat does not exists.");
-		} else {
-			return result;
-		}
-	}
-
+		
 
 
 	
