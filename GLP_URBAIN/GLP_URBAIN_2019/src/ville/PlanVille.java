@@ -195,24 +195,6 @@ public class PlanVille {
 		
 		
 	}
-	public BatimentCible searchBat(String name) throws NoSuchElementException {
-		BatimentCible result = null;
-		for (BatimentCible b : batiments) {
-			if (b.getNom().equals(name)) {
-				result = b;
-			}
-		}
-		if (result == null) {
-			throw new NoSuchElementException("Bat does not exists.");
-		} else {
-			return result;
-		}
-	}
-
-
-
-	
-
 	public ArrayList<BatimentCible> getBatiments() {
 		return batiments;
 	}
@@ -845,12 +827,32 @@ public class PlanVille {
 			return false;
 		}
 	}
+	public BatimentCible searchBat(String name) throws NoSuchElementException {
+		BatimentCible result = null;
+		for (BatimentCible b : batiments) {
+			if (b.getNom().equals(name)) {
+				result = b;
+			}
+		}
+		if (result == null) {
+			throw new NoSuchElementException("Bat does not exists.");
+		} else {
+			return result;
+		}
+}
 	public BatimentCible searchByName(String name) {
+		BatimentCible result = null;
         for (int index = 0; index < batiments.size(); index++) {
-            if (batiments.get(index).getNom().equals(name)) {
-                return batiments.get(index);
-            }
+                BatimentCible bat = batiments.get(index);
+                if (bat.getNom().equals(name)) {
+    				result = bat;
+    			}
         }
-        return null;
+        if (result == null) {
+			System.out.println("Bat " + name + " does not exists.");
+			return result;
+		} else {
+			return result;
+		}
     }
 }
