@@ -24,9 +24,10 @@ public class MainWindow implements Runnable, ActionListener{
 	private BoxLayout boxLeftPane;
 	private Menu menu;
 	private JPanel menuPane;
-	private PersoCreation persoCreation;
+	public static PersoCreation persoCreation;
 	private Action act;
 	private PlanVille ville;
+	private boolean endGame = false;
 	
 	public MainWindow() {
 		
@@ -68,7 +69,7 @@ public class MainWindow implements Runnable, ActionListener{
 		mainFrame.add(mainPane); //ligne à changer pour afficher tout le main window
 		
 		mainFrame.setSize(1870,980);
-		mainFrame.setResizable(false);
+		//mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -93,6 +94,10 @@ public class MainWindow implements Runnable, ActionListener{
 	public void run() {
 		topBarpane.start();	
 		personnages.start();
+//		while(!endGame) {
+//			map.repaint();
+//		}
+	
 	}
 
 	@Override
@@ -102,25 +107,23 @@ public class MainWindow implements Runnable, ActionListener{
 		else if(e.getSource() == action.getSelect()) {
 			if(action.getAction().getSelectedItem().equals("Manger")) {
 				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
-				act.manger(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.manger(ville.searchByName(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				map.repaint();
 			}
-		}
-		else if(e.getSource() == action.getSelect()) {
-			if(action.getAction().getSelectedItem().equals("Dormir")) {
+			else if(action.getAction().getSelectedItem().equals("Dormir")) {
 				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
-				act.dormir(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.dormir(ville.searchByName(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				map.repaint();
 			}
-		}
-		else if(e.getSource() == action.getSelect()) {
-			if(action.getAction().getSelectedItem().equals("Se dirvertir")) {
+			else if(action.getAction().getSelectedItem().equals("Se dirvertir")) {
 				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
-				act.divertir(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.divertir(ville.searchByName(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				map.repaint();
 			}
-		}
-		else if(e.getSource() == action.getSelect()) {
-			if(action.getAction().getSelectedItem().equals("Social")) {
+			else if(action.getAction().getSelectedItem().equals("Social")) {
 				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
-				act.social(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				act.social(ville.searchByName(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
+				map.repaint();
 			}
 		}
 	}

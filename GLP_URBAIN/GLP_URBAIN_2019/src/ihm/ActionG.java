@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import perso.Action;
+import perso.Personnage;
 import ville.BatimentCible;
 import ville.PlanVille;
 
@@ -20,6 +22,7 @@ public class ActionG implements ActionListener {
 	private JComboBox<String> action;
 	private GridLayout box;
 	private PlanVille plan;
+	public ListePersoG listPerso;
 	private JButton select;
 	
 	public JPanel getActionPane() {
@@ -27,7 +30,6 @@ public class ActionG implements ActionListener {
 		return actionPane;
 	}
 	public ActionG() {
-		
 		actionPane = new JPanel();
 		
 		plan = new PlanVille();
@@ -78,13 +80,13 @@ public class ActionG implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == action) {
-
+			String mot = (String)action.getSelectedItem();
+			System.out.println(mot);
 			if(action.getSelectedItem().equals("Manger")) {
 				batiment.removeAllItems();
 				for(int i = 0; i < plan.getBatiments().size() ; i++) {
 		            
-					if(plan.getBatiments().get(i).getFonction().equals("Manger")) {
-						
+					if(plan.getBatiments().get(i).getFonction().equals("Faim")) {						
 						batiment.addItem(plan.getBatiments().get(i).getNom());
 					}
 		        }	
@@ -93,7 +95,7 @@ public class ActionG implements ActionListener {
 				batiment.removeAllItems();
 				for(int i = 0; i < plan.getBatiments().size() ; i++) {
 		            
-					if(plan.getBatiments().get(i).getFonction().equals("Detente")) {
+					if(plan.getBatiments().get(i).getFonction().equals("Divertissement")) {
 						
 						batiment.addItem(plan.getBatiments().get(i).getNom());
 					}
@@ -103,7 +105,7 @@ public class ActionG implements ActionListener {
 				batiment.removeAllItems();
 				for(int i = 0; i < plan.getBatiments().size() ; i++) {
 		            
-					if(plan.getBatiments().get(i).getFonction().equals("Habitation")) {
+					if(plan.getBatiments().get(i).getFonction().equals("Energie")) {
 						
 						batiment.addItem(plan.getBatiments().get(i).getNom());
 					}
@@ -114,15 +116,10 @@ public class ActionG implements ActionListener {
 				for(int i = 0; i < plan.getBatiments().size() ; i++) {
 		            
 					if(plan.getBatiments().get(i).getFonction().equals("Social")) {
-						
 						batiment.addItem(plan.getBatiments().get(i).getNom());
 					}
 		        }
 			}
-		}
-		else if(e.getSource() == select) {
-			
-			
 		}
 	}
 }

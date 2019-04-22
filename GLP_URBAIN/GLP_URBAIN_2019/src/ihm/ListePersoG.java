@@ -43,8 +43,7 @@ public class ListePersoG extends Thread implements ActionListener{
 	private JList<String> listPerso;
 	private JScrollPane listScroller;
 	private int index;
-	 public static final int CHRONO_SPEED = 1000;
-	 public boolean stop = false;
+	public boolean stop = false;
 	
 	public JPanel getBesoinPane() {
 		
@@ -137,7 +136,8 @@ public class ListePersoG extends Thread implements ActionListener{
 	}
 
 	public void updateBesoin(Personnage perso) {
-		
+		//System.out.println(perso.getPositionX());
+		//System.out.println(perso.getPositionY());
 		energyBar.setValue(perso.getBesoin().getEnergie());
 		entertainmentBar.setValue(perso.getBesoin().getDivertissement());
 		hungerBar.setValue(perso.getBesoin().getFaim());
@@ -156,9 +156,11 @@ public class ListePersoG extends Thread implements ActionListener{
 			updateBesoin(persoCrea.getWorld().getAllCitizens().get(index));
 		}
 	}
-	public void lastSelected() {
-		
-		
+	public Personnage lastSelected() {
+//		index = listPerso.getSelectedIndex();
+//		perso = persoCrea.getWorld().getAllCitizens().get(index);
+//		listScroller.getSelectedValue();
+		return perso;
 	}
 	public void run() {
 		int temps = 0;
