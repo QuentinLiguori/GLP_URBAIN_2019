@@ -23,6 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 import perso.Personnage;
@@ -52,7 +53,7 @@ public class PersoCreation implements ActionListener{
 		private JButton jouer;
 		private JTextField newnom;
 		private JTextField newprenom;
-		private JTextField newage;
+		private JSpinner newage;
 		private JComboBox<String> newsexe;
 		private JList<String> list;
 		private DefaultListModel<String> mod;
@@ -69,7 +70,7 @@ public class PersoCreation implements ActionListener{
 	//.....Initialisation du panel............
 		persCreationPane = new JPanel();
 		persCreationPane.setLayout(new GridLayout(1, 2));
-		persoCrea = new JLabel("Création d'un personnage");
+		persoCrea = new JLabel("CrÃ©ation d'un personnage");
 		persoCrea.setFont(font);
 		main = new JPanel();
 	//...Inistialisation de Left Panel..........
@@ -93,7 +94,7 @@ public class PersoCreation implements ActionListener{
 		age = new JLabel();
 		age.setText("Age");
 		age.setFont(font2);
-		newage = new JTextField();
+		newage = new JSpinner();
 				
 		left = new JPanel();
 		left.add(sexe);
@@ -115,7 +116,7 @@ public class PersoCreation implements ActionListener{
 	//...Initiamlisation de bottomRight.....
 		creer = new JButton("Creer");
 		creer.addActionListener(this);
-		aleatoire = new JButton("Creer personnage aléatoirment");
+		aleatoire = new JButton("Creer personnage alÃ©atoirment");
 		aleatoire.addActionListener(this);
 		bottomRight = new JPanel();
 		bottomRight.add(creer);
@@ -148,7 +149,7 @@ public class PersoCreation implements ActionListener{
 	
 	public void ajout() {
 		String info;
-		info = newprenom.getText()+" "+newnom.getText()+", "+newage.getText()+" ans";
+		info = newprenom.getText()+" "+newnom.getText()+", "+newage.getValue()+" ans";
 		mod.addElement(info);
 		list.setModel(mod);
 	}
@@ -226,4 +227,3 @@ public class PersoCreation implements ActionListener{
 }
 
 	
-
