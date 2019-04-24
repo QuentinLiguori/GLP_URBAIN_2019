@@ -27,8 +27,7 @@ public class MainWindow implements Runnable, ActionListener{
 	public static PersoCreation persoCreation;
 	private Action act;
 	private PlanVille ville;
-	private boolean endGame = false;
-	
+	public static boolean gameStart;
 	public MainWindow() {
 		
 		// Initialization of the left panel //
@@ -143,7 +142,8 @@ public class MainWindow implements Runnable, ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			MainWindow.this.jouer();			
+			gameStart = true;
+			MainWindow.this.jouer();
 		}
 		
 	}

@@ -1,5 +1,9 @@
 package ihm;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,8 +21,10 @@ public class TopBar extends Thread{
     public JLabel minuteValue = new JLabel("00");
     public JLabel secondValue = new JLabel("00");
     
+    public JButton acceleratetime = new JButton("Accelerate");
+    public JButton deceleratetime = new JButton("Decelerate");
+    
     public Chronometer chronometer = new Chronometer();
-    public static final int CHRONO_SPEED = 1000;
     public boolean stop = false;
 	public String[] listday = {"Monday", "Thursday", "Wednesday", "Tuesday", "Friday", "Saturday", "Sunday"};
 	
@@ -34,7 +40,12 @@ public class TopBar extends Thread{
 	    topBarPane.add(minuteValue);
 
 	    topBarPane.add(pointLabel2);
-	    topBarPane.add(secondValue);		
+	    topBarPane.add(secondValue);
+	    
+	    deceleratetime.addActionListener(new Decelerate());
+	    topBarPane.add(deceleratetime);
+	    acceleratetime.addActionListener(new Accelerate());
+	    topBarPane.add(acceleratetime);
 	}
 	private void updateValues() {
         // This part is for textual time printing.
@@ -53,15 +64,64 @@ public class TopBar extends Thread{
 	 @Override
 	    public void run() {
 	        while (!stop) {
-	            try {
-	                Thread.sleep(SimuPara.SIMULATION_SPEED);
-	            } catch (InterruptedException e) {
-	                System.out.println(e.getMessage());
-	            }
-	            if(!stop) {
-	            	chronometer.increment();
-	            	updateValues();
-	            }
+	        	if(MainWindow.gameStart == true) {
+	        		try {
+	                	Thread.sleep(SimuPara.SIMULATION_SPEED);
+	            	} catch (InterruptedException e) {
+	                	System.out.println(e.getMessage());
+	            	}
+	            	if(!stop) {
+	            		chronometer.increment();
+	            		updateValues();
+	            	}
+	        	}
+	        	else {
+	        		updateValues();
+	        	}
 	        }
 	    }
+		private class Decelerate implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(SimuPara.SIMULATION_SPEED == 1) {
+					SimuPara.SIMULATION_SPEED = 10;
+					deceleratetime.setText("Decelerate x10");
+					acceleratetime.setText("Accelerate");
+				}
+				else if(SimuPara.SIMULATION_SPEED == 10) {
+					SimuPara.SIMULATION_SPEED = 100;
+					deceleratetime.setText("Decelerate x100");
+					acceleratetime.setText("Accelerate");
+				}
+				else if(SimuPara.SIMULATION_SPEED == 100) {
+					SimuPara.SIMULATION_SPEED = 1000;
+					deceleratetime.setText("Decelerate");
+					acceleratetime.setText("Accelerate");
+				}
+			}
+
+		}
+		private class Accelerate implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(SimuPara.SIMULATION_SPEED == 1000) {
+					SimuPara.SIMULATION_SPEED = 100;
+					acceleratetime.setText("Accelerate x10");
+					deceleratetime.setText("Decelerate");
+				}
+				else if(SimuPara.SIMULATION_SPEED == 100) {
+					SimuPara.SIMULATION_SPEED = 10;
+					acceleratetime.setText("Accelerate x100");
+					deceleratetime.setText("Decelerate");
+				}
+				else if(SimuPara.SIMULATION_SPEED == 10) {
+					SimuPara.SIMULATION_SPEED = 1;
+					acceleratetime.setText("Accelerate MAX");
+					deceleratetime.setText("Decelerate");
+				}				
+			}
+
+		}
 }
