@@ -34,8 +34,10 @@ public class MainWindow implements Runnable, ActionListener{
 		// Initialization of the left panel //
 		ville = new PlanVille();
 		menu = new Menu();
+		menu.getJouer().addActionListener(new Acceuil());
 		act = new Action();
 		persoCreation = new PersoCreation();
+		persoCreation.getJouer().addActionListener(new Jouer());
 		
 		action = new ActionG();
 		personnages = new ListePersoG();
@@ -66,7 +68,7 @@ public class MainWindow implements Runnable, ActionListener{
 		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
-		mainFrame.add(mainPane); //ligne à changer pour afficher tout le main window
+		mainFrame.setContentPane(menu.getMenu()); //ligne à changer pour afficher tout le main window
 		
 		mainFrame.setSize(1870,980);
 		//mainFrame.setResizable(false);
@@ -91,20 +93,30 @@ public class MainWindow implements Runnable, ActionListener{
 	public void setMenuPane(JPanel menuPane) {
 		this.menuPane = menuPane;
 	}
-	public void run() {
-		topBarpane.start();	
-		personnages.start();
-//		while(!endGame) {
-//			map.repaint();
-//		}
+	public static JFrame getMainFrame() {
+		return mainFrame;
+	}
+
+	public static void setMainFrame(JFrame mainFrame) {
+		MainWindow.mainFrame = mainFrame;
+	}
+	public void acceuil() {
+		mainFrame.setContentPane(persoCreation.getMain());
+		mainFrame.revalidate();
+	}
 	
+	public void jouer() {
+		mainFrame.setContentPane(mainPane);
+		mainFrame.revalidate();
+	}
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == menu.getJouer()) {
-		}
-		else if(e.getSource() == action.getSelect()) {
+		if(e.getSource() == action.getSelect()) {
 			if(action.getAction().getSelectedItem().equals("Manger")) {
 				act.deplacer(ville.searchBat(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
 				act.manger(ville.searchByName(action.getBatiment().getSelectedItem().toString()), persoCreation.getWorld().searchCitizen(personnages.getListPerso().getSelectedIndex()));
@@ -127,6 +139,30 @@ public class MainWindow implements Runnable, ActionListener{
 			}
 		}
 	}
+	public class Jouer implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MainWindow.this.jouer();
+			topBarpane.start();	
+			personnages.start();
+			
+		}
+		
+	}
+	
+	public class Acceuil implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MainWindow.this.acceuil();
+			
+		}
+		
+	}
+
+
+	
 	
 }
 
