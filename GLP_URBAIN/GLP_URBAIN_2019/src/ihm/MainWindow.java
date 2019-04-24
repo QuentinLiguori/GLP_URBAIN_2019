@@ -110,8 +110,8 @@ public class MainWindow implements Runnable, ActionListener{
 		mainFrame.revalidate();
 	}
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		topBarpane.start();	
+		personnages.start();		
 	}
 
 	@Override
@@ -143,10 +143,7 @@ public class MainWindow implements Runnable, ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			MainWindow.this.jouer();
-			topBarpane.start();	
-			personnages.start();
-			
+			MainWindow.this.jouer();			
 		}
 		
 	}
@@ -155,14 +152,7 @@ public class MainWindow implements Runnable, ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			MainWindow.this.acceuil();
-			
-		}
-		
-	}
-
-
-	
-	
+			MainWindow.this.acceuil();			
+		}		
+	}	
 }
-
