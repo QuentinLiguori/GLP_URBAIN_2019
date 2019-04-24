@@ -63,23 +63,9 @@ public class ListePersoG extends Thread implements ActionListener{
 		selectButton = new JButton("Selectionner");
 		selectButton.addActionListener(this);
 		
-		listModel = new DefaultListModel<String>();
-		
-		for(int i = 0; i < persoCrea.getWorld().getAllCitizens().size() ; i++) {
-            
-			listModel.addElement(persoCrea.getWorld().getAllCitizens().get(i).getPrenomNom());
-        }
-		
-		listPerso = new JList<String>(listModel);
-		listPerso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listPerso.setLayoutOrientation(JList.VERTICAL);
 		
 		
-		listScroller = new JScrollPane(listPerso);
-		listScroller.setPreferredSize(new Dimension(250, 250));
 		
-		personnages.add(listScroller);
-		personnages.add(selectButton);
 		
 		
 		energyBar = new JProgressBar();
@@ -127,6 +113,22 @@ public class ListePersoG extends Thread implements ActionListener{
 		besoinPane.setLayout(box);
 	}
 	
+	public DefaultListModel<String> getListModel() {
+		return listModel;
+	}
+
+	public void setListModel(DefaultListModel<String> listModel) {
+		this.listModel = listModel;
+	}
+
+	public JScrollPane getListScroller() {
+		return listScroller;
+	}
+
+	public void setListScroller(JScrollPane listScroller) {
+		this.listScroller = listScroller;
+	}
+
 	public JList<String> getListPerso() {
 		return listPerso;
 	}
@@ -143,16 +145,46 @@ public class ListePersoG extends Thread implements ActionListener{
 		hungerBar.setValue(perso.getBesoin().getFaim());
 		socialBar.setValue(perso.getBesoin().getSocial());
 		besoinPane.removeAll();
+		besoinPane.add(energie);
 		besoinPane.add(energyBar);
+		besoinPane.add(divertissement);
 		besoinPane.add(entertainmentBar);
+		besoinPane.add(faim);
 		besoinPane.add(hungerBar);
+		besoinPane.add(social);
 		besoinPane.add(socialBar);
+	}
+	
+	public void loadJList(PersoCreation creation) {
+		
+		persoCrea = creation;
+		
+		listModel = new DefaultListModel<String>();
+		//System.out.println(persoCrea.getWorld().getAllCitizens());
+		for(int i = 0; i < persoCrea.getWorld().getAllCitizens().size() ; i++) {
+            
+			listModel.addElement(persoCrea.getWorld().getAllCitizens().get(i).getPrenomNom());
+        }
+		
+		System.out.println(persoCrea.getWorld().getAllCitizens());
+		
+		listPerso = new JList<String>(listModel);
+		listPerso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listPerso.setLayoutOrientation(JList.VERTICAL);
+		
+		
+		listScroller = new JScrollPane(listPerso);
+		listScroller.setPreferredSize(new Dimension(250, 250));
+		
+		personnages.add(listScroller);
+		personnages.add(selectButton);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		index = listPerso.getSelectedIndex();
 		if(e.getSource() == selectButton) {
+			System.out.println(persoCrea.getWorld().getAllCitizens());
 			updateBesoin(persoCrea.getWorld().getAllCitizens().get(index));
 		}
 	}

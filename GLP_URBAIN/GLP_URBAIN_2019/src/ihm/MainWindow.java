@@ -67,10 +67,9 @@ public class MainWindow implements Runnable, ActionListener{
 		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
-		mainFrame.setContentPane(menu.getMenu()); //ligne à changer pour afficher tout le main window
-		
+		mainFrame.setContentPane(menu.getMenu()); 		
 		mainFrame.setSize(1870,980);
-		//mainFrame.setResizable(false);
+		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -143,6 +142,7 @@ public class MainWindow implements Runnable, ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			gameStart = true;
+			personnages.loadJList(persoCreation);
 			MainWindow.this.jouer();
 		}
 		
@@ -152,6 +152,7 @@ public class MainWindow implements Runnable, ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
 			MainWindow.this.acceuil();			
 		}		
 	}	

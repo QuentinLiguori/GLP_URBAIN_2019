@@ -64,16 +64,21 @@ public class PersoCreation implements ActionListener{
 		world = new World();
 		
 	//...Initialisation de la police........
+		
 		Font font = new Font("Arial",Font.BOLD,40);
 		Font font2 = new Font("Ubuntu", Font.BOLD, 20);
 		Font font3 = new Font("Ubuntu", Font.BOLD, 30);
+		
 	//.....Initialisation du panel............
+		
 		persCreationPane = new JPanel();
 		persCreationPane.setLayout(new GridLayout(1, 2));
 		persoCrea = new JLabel("Création d'un personnage");
 		persoCrea.setFont(font);
 		main = new JPanel();
+		
 	//...Inistialisation de Left Panel..........
+		
 		sexe = new JLabel();
 		sexe.setText("Sexe");
 		sexe.setFont(font2);
@@ -107,13 +112,17 @@ public class PersoCreation implements ActionListener{
 		left.add(newage);
 		left.setLayout(new BoxLayout(left, 1));
 		persCreationPane.add(left);
+		
 	//...Initialisation de topRight Panel....
+		
 		list = new JList<>();
 		list.setFont(font3);
 		mod  = new DefaultListModel<>();
 		topRight = new JPanel();
 		topRight.add(list);
+		
 	//...Initiamlisation de bottomRight.....
+		
 		creer = new JButton("Creer");
 		creer.addActionListener(this);
 		aleatoire = new JButton("Creer personnage aléatoirment");
@@ -124,14 +133,18 @@ public class PersoCreation implements ActionListener{
 		bottomRight.setLayout(new FlowLayout(FlowLayout.CENTER,50,50));
 		creer.setPreferredSize(new Dimension(87, 53));
 		aleatoire.setPreferredSize(new Dimension(250, 53));
+		
 	//....Iniitialisation right..........
+		
 		right = new JPanel();
 		right.add(topRight);
 		right.add(bottomRight);
 		right.setLayout(new BoxLayout(right, 1));
 				
 		persCreationPane.add(right);
+		
 	//....Initialisation panel priincipale et son layout...
+		
 		jouer = new JButton("Commencer la partie");
 				
 		main.add(persoCrea);
@@ -141,6 +154,7 @@ public class PersoCreation implements ActionListener{
 		jouer.setPreferredSize(new Dimension(87, 70));
 				
 	//...Initialisation du JComboBox......
+		
 		newsexe = new JComboBox<>();
 		newsexe.addItem("Masculin");
 		newsexe.addItem("Feminin");
@@ -154,7 +168,7 @@ public class PersoCreation implements ActionListener{
 		list.setModel(mod);
 	}
 	
-	public void ajout_aleatoire(String nom,String prenom,int age) {
+	public void ajout_aleatoire(String nom, String prenom, int age) {
 		String info = prenom+" "+nom+", "+age+" ans";
 		mod.addElement(info);
 		list.setModel(mod);
@@ -175,6 +189,7 @@ public class PersoCreation implements ActionListener{
 				ajout();
 				Personnage perso = new Personnage(newnom.getText(), newprenom.getText(), newsexe.getSelectedItem().toString(), 45,146,167, 159, 156);
 				world.getAllCitizens().add(perso);
+				System.out.println(world.getAllCitizens());
 			}
 			else {
 				System.out.println("Le nombre maximal de personnage est atteint");
@@ -189,14 +204,17 @@ public class PersoCreation implements ActionListener{
 				String sex = "Masculin";
 			    int age = 30;
 			    ajout_aleatoire(name, fname, age);
-				Personnage perso = new Personnage(fname, name, sex, age,146,167, 159, 156);
+				Personnage perso = new Personnage(fname, name, sex, age);
 				world.getAllCitizens().add(perso);
+				System.out.println(world.getAllCitizens());
+
+				
+			}
+			else {
+				System.out.println("Le nombre maximal de personnage est atteint");
 			}
 		}
 		
-		if(e.getSource() == jouer) {
-			
-		}
 	}
 	
 	public World getWorld() {
