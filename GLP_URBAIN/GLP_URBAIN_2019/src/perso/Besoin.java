@@ -22,57 +22,19 @@ public class Besoin {
 		this.social = social;
 	}
 	
-	public int faimMaxMin(int faim) {
+	public int besoinMaxMin(int bes) {
 		
-		if (faim > 500) {
+		if (bes > 500) {
 			
-			faim = 500;
+			bes = 500;
 		}
-		else if(faim < 0) {
+		else if(bes < 0) {
 			
-			faim = 0;
+			bes = 0;
 		}
-		return faim;
+		return bes;
 	}
 	
-	public int energieMaxMin(int energie) {
-		
-		if (energie> 500) {
-			
-			energie = 500;
-		}
-		else if(energie < 0) {
-			
-			energie = 0;
-		}
-		return energie;
-	}
-	
-	public int divertissementMaxMin(int divertissement) {
-		
-		if (divertissement > 500) {
-			
-			divertissement = 500;
-		}
-		else if(divertissement < 0) {
-			
-			divertissement = 0;
-		}
-		return divertissement;
-	}
-	
-	public int socialMaxMin(int social) {
-		
-		if (social > 500) {
-			
-			social = 500;
-		}
-		else if(social < 0) {
-			
-			social = 0;
-		}
-		return social;
-	}
 	
 	public int getFaim() {
 		return faim;
@@ -106,7 +68,7 @@ public class Besoin {
 		this.social = social;
 	}
 	public void updateBesoin(int temps) {
-		if(temps <= 5) {
+		if(temps <= 1) {
 			setFaim(getFaim() - 1);
 			setDivertissement(getDivertissement() - 1);
 			setSocial(getSocial() - 1);

@@ -15,6 +15,7 @@ public class Action {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
 			bes.setFaim(bes.getFaim()+bat.getValeur()/**"temps"*/);
+			bes.setFaim(bes.besoinMaxMin(bes.getFaim()));
 			perso.setBesoin(bes);	
 		}
 	}
@@ -22,6 +23,7 @@ public class Action {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
 			bes.setEnergie(bes.getEnergie()+bat.getValeur()/**"temps"*/);
+			bes.setEnergie(bes.besoinMaxMin(bes.getEnergie()));
 			perso.setBesoin(bes);			
 		}
 	}
@@ -29,6 +31,7 @@ public class Action {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
 			bes.setDivertissement((bes.getDivertissement()+bat.getValeur()/**"temps"*/));
+			bes.setDivertissement(bes.besoinMaxMin(bes.getDivertissement()));
 			perso.setBesoin(bes);			
 		}
 	}
@@ -36,6 +39,7 @@ public class Action {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
 			bes.setSocial((bes.getSocial()+bat.getValeur()/**"temps"*/));
+			bes.setSocial(bes.besoinMaxMin(bes.getSocial()));
 			perso.setBesoin(bes);			
 		}
 	}
