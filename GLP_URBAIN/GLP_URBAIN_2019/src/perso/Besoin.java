@@ -69,10 +69,10 @@ public class Besoin {
 	}
 	public void updateBesoin(int temps) {
 		if(temps <= 1) {
-			setFaim(getFaim() - 1);
-			setDivertissement(getDivertissement() - 1);
-			setSocial(getSocial() - 1);
-			setEnergie(getEnergie() - 1);
+			setFaim(besoinMaxMin(getFaim() - 1));
+			setDivertissement(besoinMaxMin(getDivertissement() - 1));
+			setSocial(besoinMaxMin(getSocial() - 1));
+			setEnergie(besoinMaxMin(getEnergie() - 1));
 		}
 	}
 	
