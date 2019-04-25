@@ -1,29 +1,53 @@
 package donnee;
 
+/**
+ * @author Quentin Liguori
+ * 
+ * This class is a point who have to coordinates
+ */
+
+
 public class Point {
 	
-	private double x;
-	private double y;
+	private int x;
+	private int y;
 	
-	public Point(double x, double y) {
+	/**
+	 * Constructor of the Point
+	 * @param x
+	 * @param y
+	 */
+	public Point(int x, int y) {
 		
 		this.x = x;
 		this.y = y;
+		
 	}
-
-	public double getX() {
+	/**
+	 * @return X
+	 */
+	public int getX() {
 		return x;
 	}
-
-	public void setX(double x) {
+	/**
+	 * 
+	 * @param x
+	 */
+	public void setX(int x) {
 		this.x = x;
 	}
-
-	public double getY() {
+	/**
+	 * 
+	 * @return Y
+	 */
+	public int getY() {
 		return y;
 	}
-
-	public void setY(double y) {
+	/**
+	 * 
+	 * @param y
+	 */
+	public void setY(int y) {
 		this.y = y;
 	}
 }
