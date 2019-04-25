@@ -69,7 +69,7 @@ public class MainWindow implements Runnable, ActionListener{
 		mainFrame.setTitle("Urbain");
 		mainFrame.setContentPane(menu.getMenu()); 		
 		mainFrame.setSize(1870,980);
-		mainFrame.setResizable(false);
+		//mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
