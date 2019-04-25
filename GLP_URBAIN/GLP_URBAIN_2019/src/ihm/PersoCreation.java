@@ -14,6 +14,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -30,6 +31,14 @@ import perso.Personnage;
 import world.World;
 
 public class PersoCreation implements ActionListener{
+	
+	// Initialisation du random pour le joueur //
+	
+		private Random rand;
+		private String[] randPrenomM;
+		private String[] randNom;
+		private String[] randPrenomF;
+		private int randAge;
 	
 	//..................Les labels......................................
 		private JLabel persoCrea;
@@ -62,6 +71,94 @@ public class PersoCreation implements ActionListener{
 	public PersoCreation() {
 		
 		world = new World();
+	
+	// Initialisation des tableaux pour les resonnages aléatoire //
+		
+		rand = new Random();
+		
+		randPrenomF = new String[20];
+		randPrenomM = new String [20];
+		randNom = new String[30];
+		
+		// Base de données des prénoms Masculin Aléatoire //
+		
+		randPrenomM[0] = "Lionel";
+		randPrenomM[1] = "Quentin";
+		randPrenomM[2] = "Mohamed";
+		randPrenomM[3] = "Adrien";
+		randPrenomM[4] = "Roger";
+		randPrenomM[5] = "Jules";
+		randPrenomM[6] = "Paul";
+		randPrenomM[7] = "Jake";
+		randPrenomM[8] = "Alan";
+		randPrenomM[9] = "Remi";
+		randPrenomM[10] = "Bernard";
+		randPrenomM[11] = "Loic";
+		randPrenomM[12] = "Lucas";
+		randPrenomM[13] = "David";
+		randPrenomM[14] = "Jean";
+		randPrenomM[15] = "Kevin";
+		randPrenomM[16] = "William";
+		randPrenomM[17] = "Eliot";
+		randPrenomM[18] = "Louis";
+		randPrenomM[19] = "Theo";
+		
+		// Base de données des prénoms féminin aléatoires //
+		
+		randPrenomF[0] = "Julie";
+		randPrenomF[1] = "Lea";
+		randPrenomF[2] = "Laura";
+		randPrenomF[3] = "Axelle";
+		randPrenomF[4] = "Sarah";
+		randPrenomF[5] = "Elise";
+		randPrenomF[6] = "Brigitte";
+		randPrenomF[7] = "Carole";
+		randPrenomF[8] = "Jeanne";
+		randPrenomF[9] = "Audrey";
+		randPrenomF[10] = "Huguette";
+		randPrenomF[11] = "Natalie";
+		randPrenomF[12] = "Jessie";
+		randPrenomF[13] = "Isabelle";
+		randPrenomF[14] = "Celina";
+		randPrenomF[15] = "Camille";
+		randPrenomF[16] = "Anne";
+		randPrenomF[17] = "Lucie";
+		randPrenomF[18] = "Louise";
+		randPrenomF[19] = "Manon";
+		
+		// Bases de données des noms de familles aléatoires //
+		
+		randNom[0] = "Petit";
+		randNom[1] = "Durand";
+		randNom[2] = "Peralta";
+		randNom[3] = "Leroux";
+		randNom[4] = "Picard";
+		randNom[5] = "Fournier";
+		randNom[6] = "Leroy";
+		randNom[7] = "Snively";
+		randNom[8] = "Guyot";
+		randNom[9] = "Cordier";
+		randNom[10] = "Pichon";
+		randNom[11] = "Pasquier";
+		randNom[12] = "Carlier";
+		randNom[13] = "Vasseur";
+		randNom[14] = "Weber";
+		randNom[15] = "Muller";
+		randNom[16] = "Aubert";
+		randNom[17] = "Fabre";
+		randNom[18] = "Schneider";
+		randNom[19] = "Hernandez";
+		randNom[20] = "Leger";
+		randNom[21] = "Millet";
+		randNom[22] = "Pereira";
+		randNom[23] = "Gonzalez";
+		randNom[24] = "Coste";
+		randNom[25] = "Bourdon";
+		randNom[26] = "Seguin";
+		randNom[27] = "De la Fontaine";
+		randNom[28] = "Lunda";
+		randNom[29] = "Sabia";
+		
 		
 	//...Initialisation de la police........
 		
@@ -199,15 +296,27 @@ public class PersoCreation implements ActionListener{
 		if(e.getSource() == aleatoire) {
 			
 			if(world.getAllCitizens().size() <5) {
-				String fname = "Jack";
-				String name = "Peralta";
-				String sex = "Masculin";
-			    int age = 30;
-			    ajout_aleatoire(name, fname, age);
-				Personnage perso = new Personnage(fname, name, sex, age);
-				world.getAllCitizens().add(perso);
-				System.out.println(world.getAllCitizens());
-
+				
+				if(rand.nextInt(2) == 1) {
+					String fname = randPrenomM[rand.nextInt(20)];
+					String name = randNom[rand.nextInt(30)];
+					String sex = "Masculin";
+				    int age = 18 + rand.nextInt(80);
+				    ajout_aleatoire(name, fname, age);
+					Personnage perso = new Personnage(fname, name, sex, age);
+					world.getAllCitizens().add(perso);
+					
+				}
+				else {
+					String fname = randPrenomF[rand.nextInt(20)];
+					String name = randNom[rand.nextInt(30)];
+					String sex = "Feminin";
+					int age = 18 + rand.nextInt(80);
+					ajout_aleatoire(name, fname, age);
+					Personnage perso = new Personnage(fname, name, sex, age);
+					world.getAllCitizens().add(perso);
+					
+				}
 				
 			}
 			else {
