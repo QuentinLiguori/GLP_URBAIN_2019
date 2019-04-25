@@ -14,6 +14,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -30,6 +31,11 @@ import javax.swing.JTextField;
 import perso.Personnage;
 import world.World;
 
+/**
+ * This class manage the panel with the character creation 
+ * @author Quentin Liguori
+ *
+ */
 public class PersoCreation implements ActionListener{
 	
 	// Initialisation du random pour le joueur //
@@ -68,6 +74,18 @@ public class PersoCreation implements ActionListener{
 		private DefaultListModel<String> mod;
 		private World world;
 	
+	/**
+	 * Constructor of PersoCreation, initialize the character creation of the graphic interface
+	 * 
+	 * @see JPanel#setLayout(java.awt.LayoutManager)
+	 * @see JLabel#setFont(Font)
+	 * @see JLabel#setText(String)
+	 * @see JComboBox#addItem(Object)
+	 * @see JPanel#add(java.awt.Component)
+	 * @see JPanel#setLayout(java.awt.LayoutManager)
+	 * @see JButton#setPreferredSize(Dimension)
+	 * @see JComboBox#setSelectedItem(Object)
+	 */
 	public PersoCreation() {
 		
 		world = new World();
@@ -258,6 +276,14 @@ public class PersoCreation implements ActionListener{
 		newsexe.setSelectedIndex(0);
 	}		
 	
+	/**
+	 * Add a character to the game
+	 * 
+	 * @see JTextField#getText()
+	 * @see JSpinner#getValue()
+	 * @see DefaultListModel#addElement(Object)
+	 * @see JList#setModel(javax.swing.ListModel)
+	 */
 	public void ajout() {
 		String info;
 		info = newprenom.getText()+" "+newnom.getText()+", "+newage.getValue()+" ans";
@@ -265,19 +291,49 @@ public class PersoCreation implements ActionListener{
 		list.setModel(mod);
 	}
 	
+	/**
+	 * Add a random character to the game
+	 * @param nom
+	 * @param prenom
+	 * @param age
+	 * @see DefaultListModel#addElement(Object)
+	 * @see JList#setModel(javax.swing.ListModel)
+	 */
 	public void ajout_aleatoire(String nom, String prenom, int age) {
 		String info = prenom+" "+nom+", "+age+" ans";
 		mod.addElement(info);
 		list.setModel(mod);
 	}
+	
+	/**
+	 * Return the JButton jouer in the character creation frame
+	 * @return jouer
+	 */
 	public JButton getJouer() {
 		return jouer;
 	}
-
+	
+	/**
+	 * set the JButton jouer in the character creation frame
+	 * @param jouer
+	 */
 	public void setJouer(JButton jouer) {
 		this.jouer = jouer;
 	}
-
+	
+	/**
+	 * Wait an action to be performed, react to the action to click on add a character or add a random character
+	 * 
+	 * @see ActionEvent#getSource()
+	 * @see World#getAllCitizens()
+	 * @see ArrayList#size()
+	 * @see JTextField#getText()
+	 * @see JComboBox#getSelectedItem()
+	 * @see Object#toString()
+	 * @see ArrayList#add(Object)
+	 * @see Random#nextInt(int)
+	 * @see PersoCreation#ajout_aleatoire(String, String, int)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == creer) {
@@ -286,7 +342,6 @@ public class PersoCreation implements ActionListener{
 				ajout();
 				Personnage perso = new Personnage(newnom.getText(), newprenom.getText(), newsexe.getSelectedItem().toString(), 45,146,167, 159, 156);
 				world.getAllCitizens().add(perso);
-				System.out.println(world.getAllCitizens());
 			}
 			else {
 				System.out.println("Le nombre maximal de personnage est atteint");
@@ -326,26 +381,50 @@ public class PersoCreation implements ActionListener{
 		
 	}
 	
+	/**
+	 * Return the object World
+	 * @return world
+	 */
 	public World getWorld() {
 		return world;
 	}
 
+	/**
+	 * Set the object World
+	 * @param world
+	 */
 	public void setWorld(World world) {
 		this.world = world;
 	}
-
+	
+	/**
+	 * Return the JPanel main, the JPanel of the character creation frame 
+	 * @return main
+	 */
 	public JPanel getMain() {
 		return main;
 	}
 
+	/**
+	 * Set the JPanel main, the JPanel of the character creation frame
+	 * @param main
+	 */
 	public void setMain(JPanel main) {
 		this.main = main;
 	}
 
+	/**
+	 * Return the persCreationPane
+	 * @return persCreationPane
+	 */
 	public JPanel getPersCreationPane() {
 		return persCreationPane;
 	}
-
+	
+	/**
+	 * Set the persCreationPane
+	 * @param persCreationPane
+	 */
 	public void setPersCreationPane(JPanel persCreationPane) {
 		this.persCreationPane = persCreationPane;
 	}

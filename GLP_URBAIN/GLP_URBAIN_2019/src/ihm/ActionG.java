@@ -3,6 +3,7 @@ package ihm;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -16,6 +17,12 @@ import perso.Personnage;
 import ville.BatimentCible;
 import ville.PlanVille;
 
+/**
+ * @author Quentin Liguori
+ * 
+ *	This class initialize the part of the graphic interface who manages the action of a character
+ */
+
 public class ActionG implements ActionListener {
 	private JPanel actionPane;
 	private JComboBox<String> batiment;
@@ -25,10 +32,26 @@ public class ActionG implements ActionListener {
 	public ListePersoG listPerso;
 	private JButton select;
 	
+	/**
+	 * 
+	 * @return JPanel
+	 */
 	public JPanel getActionPane() {
 		
 		return actionPane;
 	}
+	
+	/**
+	 * Constructor of ActionG
+	 * When a object is built, initialize The action part of the graphic interface
+	 * 
+	 * @see JComboBox#addItem(Object)
+	 * @see JComboBox#setSize(int, int)
+	 * @see JButton#setText(String)
+	 * @see JComboBox#addActionListener(ActionListener)
+	 * @see JPanel#add(java.awt.Component)
+	 * @see JPanel#setLayout(java.awt.LayoutManager)
+	 */
 	public ActionG() {
 		actionPane = new JPanel();
 		
@@ -60,9 +83,16 @@ public class ActionG implements ActionListener {
 		actionPane.setLayout(box);
 	}
 	
+	/**
+	 * return The JButton Select
+	 * @return select
+	 */
 	public JButton getSelect() {
 		return select;
 	}
+	/**
+	 * @param select
+	 */
 	public void setSelect(JButton select) {
 		this.select = select;
 	}
@@ -78,10 +108,26 @@ public class ActionG implements ActionListener {
 	public void setAction(JComboBox<String> action) {
 		this.action = action;
 	}
+	
+	/**
+	 * Wait an action to performed an appropriate answer, and adapt the graphic interface following the action
+	 * 
+	 * @see ActionEvent#getSource()
+	 * @see JComboBox#getSelectedItem()
+	 * @see Object#equals(Object)
+	 * @see JComboBox#removeAllItems()
+	 * @see PlanVille#getBatiments()
+	 * @see ArrayList#size()
+	 * @see ArrayList#get(int)
+	 * @see BatimentCible#getFonction()
+	 * @see BatimentCible#getNom()
+	 * @see JComboBox#addItem(Object)
+	 */
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource() == action) {
 			String mot = (String)action.getSelectedItem();
-			System.out.println(mot);
+			
 			if(action.getSelectedItem().equals("Manger")) {
 				batiment.removeAllItems();
 				for(int i = 0; i < plan.getBatiments().size() ; i++) {

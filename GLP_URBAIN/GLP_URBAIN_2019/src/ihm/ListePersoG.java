@@ -3,6 +3,7 @@ package ihm;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
@@ -17,9 +18,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
+import perso.Besoin;
 import perso.Personnage;
+import world.World;
 
-
+/**
+ * 
+ * @author Quentin Liguori
+ *
+ *	This Class initialize the part of the graphic interface who manage the character and their need 
+ */
 public class ListePersoG extends Thread implements ActionListener{
 	
 	// Initialize Button and Panel //
@@ -34,7 +42,6 @@ public class ListePersoG extends Thread implements ActionListener{
 	private JProgressBar socialBar;
 	private BoxLayout box;
 	private PersoCreation persoCrea;
-	private Iterator<Personnage> it;
 	private JLabel energie;
 	private JLabel divertissement;
 	private JLabel faim;
@@ -45,15 +52,34 @@ public class ListePersoG extends Thread implements ActionListener{
 	private int index;
 	public boolean stop = false;
 	
+	/**
+	 * Return the JPanel who contain the JProgressBar
+	 * @return besoinPane
+	 */
 	public JPanel getBesoinPane() {
 		
 		return besoinPane;
 	}
 	
+	/**
+	 * Return the JPanel who contains the JList of all Character
+	 * @return personnages
+	 */
 	public JPanel getPersonnages(){
 		
 		return personnages;
 	}
+	
+	/**
+	 * @see JButton#addActionListener(ActionListener)
+	 * @see JProgressBar#setSize(int, int)
+	 * @see JProgressBar#setMaximum(int)
+	 * @see JProgressBar#setMinimum(int)
+	 * @see JProgressBar#setStringPainted(boolean)
+	 * @see JProgressBar#setValue(int)
+	 * @see JPanel#add(java.awt.Component)
+	 * @see JPanel#setLayout(java.awt.LayoutManager)
+	 */
 	public ListePersoG() {
 		
 		persoCrea = new PersoCreation();
@@ -62,11 +88,6 @@ public class ListePersoG extends Thread implements ActionListener{
 		
 		selectButton = new JButton("Selectionner");
 		selectButton.addActionListener(this);
-		
-		
-		
-		
-		
 		
 		energyBar = new JProgressBar();
 		energyBar.setSize(200, 100);
@@ -137,9 +158,16 @@ public class ListePersoG extends Thread implements ActionListener{
 		this.listPerso = listPerso;
 	}
 
+	/**
+	 * Update the value of the JProgressBar of the selected character
+	 * @param perso
+	 * 
+	 * @see JProgressBar#setValue(int)
+	 * @see JPanel#add(java.awt.Component)
+	 * @see JPanel#removeAll()
+	 */
 	public void updateBesoin(Personnage perso) {
-		//System.out.println(perso.getPositionX());
-		//System.out.println(perso.getPositionY());
+		
 		energyBar.setValue(perso.getBesoin().getEnergie());
 		entertainmentBar.setValue(perso.getBesoin().getDivertissement());
 		hungerBar.setValue(perso.getBesoin().getFaim());
@@ -155,18 +183,30 @@ public class ListePersoG extends Thread implements ActionListener{
 		besoinPane.add(socialBar);
 	}
 	
+	/**
+	 * Load the JList with all the created character
+	 * @param creation
+	 * @see PersoCreation#getWorld()
+	 * @see World#getAllCitizens()
+	 * @see ArrayList#size()
+	 * @see DefaultListModel#addElement(Object)
+	 * @see ArrayList#get(int)
+	 * @see Personnage#getPrenomNom()
+	 * @see JList#setSelectionMode(int)
+	 * @see JList#setLayoutOrientation(int)
+	 * @see JScrollPane#setPreferredSize(Dimension)
+	 * @see JPanel#add(java.awt.Component)
+	 */
 	public void loadJList(PersoCreation creation) {
 		
 		persoCrea = creation;
 		
 		listModel = new DefaultListModel<String>();
-		//System.out.println(persoCrea.getWorld().getAllCitizens());
 		for(int i = 0; i < persoCrea.getWorld().getAllCitizens().size() ; i++) {
             
 			listModel.addElement(persoCrea.getWorld().getAllCitizens().get(i).getPrenomNom());
         }
 		
-		System.out.println(persoCrea.getWorld().getAllCitizens());
 		
 		listPerso = new JList<String>(listModel);
 		listPerso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -179,21 +219,38 @@ public class ListePersoG extends Thread implements ActionListener{
 		personnages.add(listScroller);
 		personnages.add(selectButton);
 	}
-
+	
+	/**
+	 * Wait an action to be performed, react to the action, here to the select button to select a character
+	 * @see ActionEvent#getSource()
+	 * @see JList#getSelectedIndex()
+	 * @see ListePersoG#updateBesoin(Personnage)
+	 * @see PersoCreation#getWorld()
+	 * @see World#getAllCitizens()
+	 * @see ArrayList#get(int)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		index = listPerso.getSelectedIndex();
 		if(e.getSource() == selectButton) {
-			System.out.println(persoCrea.getWorld().getAllCitizens());
 			updateBesoin(persoCrea.getWorld().getAllCitizens().get(index));
 		}
 	}
-	public Personnage lastSelected() {
-//		index = listPerso.getSelectedIndex();
-//		perso = persoCrea.getWorld().getAllCitizens().get(index);
-//		listScroller.getSelectedValue();
-		return perso;
-	}
+	
+	/**
+	 * Method who handle the time in the simulation 
+	 * 
+	 * @see Thread#sleep(long)
+	 * @see InterruptedException#getMessage()
+	 * @see PersoCreation#getWorld()
+	 * @see World#getAllCitizens()
+	 * @see ArrayList#get(int)
+	 * @see ArrayList#size()
+	 * @see Personnage#getBesoin()
+	 * @see Besoin#updateBesoin(int)
+	 * @see ListePersoG#updateBesoin(Personnage)
+	 * @see ListePersoG#stop()
+	 */
 	public void run() {
 		int temps = 0;
         while (!stop) {

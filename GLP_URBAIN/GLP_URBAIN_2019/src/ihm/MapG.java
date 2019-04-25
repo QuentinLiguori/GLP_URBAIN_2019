@@ -12,8 +12,13 @@ import javax.swing.JTextArea;
 
 import perso.Personnage;
 import ville.PlanVille;
-import data.World;
+import world.World;
 
+/**
+ * 
+ * @author Quentin Liguori
+ * This class initialize the all Map of the city
+ */
 public class MapG extends JPanel {
 	
 	private PlanVille ville;
@@ -42,18 +47,34 @@ public class MapG extends JPanel {
 	
 	private JPanel mapPane;
 	
-	
+	/**
+	 * Return the JPanel with the all map on it
+	 * @return mapPane
+	 */
 	public JPanel getMapPane() {
 		
 		return mapPane;
 	}
-
+	
+	/**
+	 * Constructor of MapG
+	 */
 	public MapG() {
 		mapPane = new JPanel();
 		ville = new PlanVille();
 		this.setBackground(Color.DARK_GRAY);
 		
 	}
+	
+	/**
+	 * Paint the component of the map on the JPanel of the map
+	 * 
+	 * @see ImageIO#read(File)
+	 * @see IOException#printStackTrace()
+	 * @see JPanel#paintComponents(Graphics)
+	 * @see Graphics#setColor(Color)
+	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
+	 */
 	public void paintComponent(Graphics g) {
 		
 		try {
@@ -121,6 +142,14 @@ public class MapG extends JPanel {
 //*********************************dessins des routes*************************************************************//
 		
 	}
+	
+	/**
+	 * Paint the character on the map
+	 * @param posX
+	 * @param posY
+	 * @param g
+	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
+	 */
 	public void paintPerso(int posX, int posY, Graphics g) {
 		g.drawImage(image0,posX,posY, 20, 20,this);
 	}
