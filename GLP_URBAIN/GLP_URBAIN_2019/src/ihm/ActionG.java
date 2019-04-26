@@ -29,7 +29,7 @@ public class ActionG implements ActionListener {
 	private JPanel actionPane;
 	private JComboBox<String> batiment;
 	private JComboBox<String> action;
-	private GridLayout box;
+	private BoxLayout box;
 	private PlanVille plan;
 	public ListePersoG listPerso;
 	private JButton select;
@@ -88,8 +88,8 @@ public class ActionG implements ActionListener {
 		
 		actionPane.add(scrollAction);
 		
-		box = new GridLayout(8,1);
-		actionPane.setLayout(box);
+		box = new BoxLayout(actionPane, 0);
+		
 	}
 	
 	/**
