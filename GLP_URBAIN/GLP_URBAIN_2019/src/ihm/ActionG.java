@@ -10,7 +10,9 @@ import java.util.Set;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import perso.Action;
 import perso.Personnage;
@@ -31,6 +33,8 @@ public class ActionG implements ActionListener {
 	private PlanVille plan;
 	public ListePersoG listPerso;
 	private JButton select;
+	private JList listAction;
+	private JScrollPane scrollAction;
 	
 	/**
 	 * 
@@ -78,6 +82,11 @@ public class ActionG implements ActionListener {
 		actionPane.add(action);
 		actionPane.add(batiment);
 		actionPane.add(select);
+		
+		listAction = new JList<>();
+		scrollAction = new JScrollPane(listAction);
+		
+		actionPane.add(scrollAction);
 		
 		box = new GridLayout(8,1);
 		actionPane.setLayout(box);
