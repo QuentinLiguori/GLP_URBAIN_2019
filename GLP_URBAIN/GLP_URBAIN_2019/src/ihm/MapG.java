@@ -74,6 +74,7 @@ public class MapG extends JPanel {
 	 * @see JPanel#paintComponents(Graphics)
 	 * @see Graphics#setColor(Color)
 	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
+	 * @see Graphics#drawString(String, int, int)
 	 */
 	public void paintComponent(Graphics g) {
 		
@@ -138,7 +139,8 @@ public class MapG extends JPanel {
 		//************************personnage*******************************************************//
 				for(int i = 0; i < MainWindow.persoCreation.getWorld().getAllCitizens().size() ; i++) {
 		            g.drawImage(image0,MainWindow.persoCreation.getWorld().getAllCitizens().get(i).getPositionX(),MainWindow.persoCreation.getWorld().getAllCitizens().get(i).getPositionY(), 20, 20,this);
-		        }
+		            g.drawString(MainWindow.persoCreation.getWorld().getAllCitizens().get(i).getPrenomNom(), MainWindow.persoCreation.getWorld().getAllCitizens().get(i).getPositionX(), MainWindow.persoCreation.getWorld().getAllCitizens().get(i).getPositionY() - 3);
+				}
 //*********************************dessins des routes*************************************************************//
 		
 	}
@@ -149,9 +151,12 @@ public class MapG extends JPanel {
 	 * @param posY
 	 * @param g
 	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
+	 * @see Graphics#drawString(String, int, int)
 	 */
-	public void paintPerso(int posX, int posY, Graphics g) {
+	/*public void paintPerso(int posX, int posY, Graphics g) {
 		g.drawImage(image0,posX,posY, 20, 20,this);
-	}
+        g.drawString(posX, , ());
+
+	}*/
 	
 }
