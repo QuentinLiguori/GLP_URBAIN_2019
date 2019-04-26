@@ -2,6 +2,11 @@ package ville;
 
 import donnee.Point;
 
+/**
+ * Store all the data of a building
+ * @author Quentin Liguori
+ *
+ */
 public class BatimentCible {
 	private Point hautGauche;
 	private Point basDroite;
@@ -15,6 +20,20 @@ public class BatimentCible {
 	private int posXporte;
 	private int posYporte;
 	
+	/**
+	 * Constructor of BatimentCible
+	 * @param nom
+	 * @param fonction
+	 * @param capacite
+	 * @param capacitemax
+	 * @param ouverture
+	 * @param fermeture
+	 * @param hautGauche
+	 * @param basDroite
+	 * @param valeur
+	 * @param posXporte
+	 * @param posYporte
+	 */
 	public BatimentCible(String nom, String fonction, int capacite, int capacitemax, int ouverture, int fermeture, Point hautGauche, Point basDroite, int valeur,int posXporte,int posYporte) {
 		this.nom = nom;
 		this.fonction = fonction;
@@ -35,10 +54,6 @@ public class BatimentCible {
 	public void setValeur(int valeur) {
 		this.valeur = valeur;
 	}
-	public BatimentCible() {
-		
-	}
-	
 	public Point getHautGauche() {
 		return hautGauche;
 	}
@@ -86,6 +101,18 @@ public class BatimentCible {
 	}
 	public void setFermeture(int fermeture) {
 		this.fermeture = fermeture;
+	}
+	public int getPosXporte() {
+		return posXporte;
+	}
+	public void setPosXporte(int posXporte) {
+		this.posXporte = posXporte;
+	}
+	public int getPosYporte() {
+		return posYporte;
+	}
+	public void setPosYporte(int posYporte) {
+		this.posYporte = posYporte;
 	}
 	
 }

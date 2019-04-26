@@ -6,11 +6,16 @@ import java.util.NoSuchElementException;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
-import data.Point;
+import donnee.Point;
 
+/**
+ * Class who contains all the batiment of the city
+ * @author Quentin Liguori
+ *
+ */
 public class PlanVille {
 	private ArrayList<BatimentCible> batiments;
-	private HashMap<String,Route> routes;
+	
 	
 	private Point hgHome1;
 	private Point bdHome1;
@@ -88,6 +93,9 @@ public class PlanVille {
 	private Point bdParc2;
 	private BatimentCible parc2;
 	
+	/**
+	 * Constructor of Planville, Initialize all the batiment in the city
+	 */
 	public PlanVille() {
 		
 		batiments = new ArrayList<BatimentCible>();
@@ -198,627 +206,315 @@ public class PlanVille {
 	public ArrayList<BatimentCible> getBatiments() {
 		return batiments;
 	}
-
-
-
-
-
 	public void setBatiments(ArrayList<BatimentCible> batiments) {
 		this.batiments = batiments;
 	}
 	
-	
-
-
-
 	public Point getHgHome1() {
 		return hgHome1;
 	}
-
-
-
-
-
+	
 	public Point getBdHome1() {
 		return bdHome1;
 	}
 
-
-
-
-
 	public BatimentCible getHome1() {
 		return Home1;
 	}
-
-
-
-
-
+	
 	public Point getHgHome2() {
 		return hgHome2;
 	}
-
-
-
-
-
+	
 	public Point getBdHome2() {
 		return bdHome2;
 	}
 
-
-
-
-
 	public BatimentCible getHome2() {
 		return home2;
 	}
-
-
-
-
-
+	
 	public Point getHgHome3() {
 		return hgHome3;
 	}
-
-
-
-
 
 	public Point getBdHome3() {
 		return bdHome3;
 	}
 
-
-
-
-
 	public BatimentCible getHome3() {
 		return home3;
 	}
 
-
-
-
-
 	public Point getHgHome4() {
 		return hgHome4;
 	}
-
-
-
-
-
+	
 	public Point getBdHome4() {
 		return bdHome4;
 	}
-
-
-
-
 
 	public BatimentCible getHome4() {
 		return Home4;
 	}
 
-
-
-
-
 	public Point getHgHome5() {
 		return hgHome5;
 	}
-
-
-
-
 
 	public Point getBdHome5() {
 		return bdHome5;
 	}
 
-
-
-
-
 	public BatimentCible getHome5() {
 		return Home5;
 	}
-
-
-
-
 
 	public Point getHgHome6() {
 		return hgHome6;
 	}
 
-
-
-
-
 	public Point getBdHome6() {
 		return bdHome6;
 	}
-
-
-
-
 
 	public BatimentCible getHome6() {
 		return Home6;
 	}
 
-
-
-
-
 	public Point getHgHome7() {
 		return hgHome7;
 	}
-
-
-
-
 
 	public Point getBdHome7() {
 		return bdHome7;
 	}
 
-
-
-
-
 	public BatimentCible getHome7() {
 		return Home7;
 	}
-
-
-
-
 
 	public Point getHgHome8() {
 		return hgHome8;
 	}
 
-
-
-
-
 	public Point getBdHome8() {
 		return bdHome8;
 	}
-
-
-
-
 
 	public BatimentCible getHome8() {
 		return Home8;
 	}
 
-
-
-
-
 	public Point getHgHome9() {
 		return hgHome9;
 	}
-
-
-
-
 
 	public Point getBdHome9() {
 		return bdHome9;
 	}
 
-
-
-
-
 	public BatimentCible getHome9() {
 		return Home9;
 	}
-
-
-
-
 
 	public Point getHgResto1() {
 		return hgResto1;
 	}
 
-
-
-
-
 	public Point getBdResto1() {
 		return bdResto1;
 	}
-
-
-
-
 
 	public BatimentCible getResto1() {
 		return resto1;
 	}
 
-
-
-
-
 	public Point getHgResto2() {
 		return hgResto2;
 	}
-
-
-
-
 
 	public Point getBdResto2() {
 		return bdResto2;
 	}
 
-
-
-
-
 	public BatimentCible getResto2() {
 		return resto2;
 	}
-
-
-
-
 
 	public Point getHgCinema() {
 		return hgCinema;
 	}
 
-
-
-
-
 	public Point getBdCinema() {
 		return bdCinema;
 	}
-
-
-
-
 
 	public BatimentCible getCinema() {
 		return cinema;
 	}
 
-
-
-
-
 	public Point getHgBar1() {
 		return hgBar1;
 	}
-
-
-
-
 
 	public Point getBdBar1() {
 		return bdBar1;
 	}
 
-
-
-
-
 	public BatimentCible getBar1() {
 		return bar1;
 	}
-
-
-
-
 
 	public Point getHgParc() {
 		return hgParc;
 	}
 
-
-
-
-
 	public Point getBdParc() {
 		return bdParc;
 	}
-
-
-
-
 
 	public BatimentCible getParc() {
 		return parc;
 	}
 
-
-
-
-
 	public Point getHgBureau1() {
 		return hgBureau1;
 	}
-
-
-
-
 
 	public Point getBdBureau1() {
 		return bdBureau1;
 	}
 
-
-
-
-
 	public BatimentCible getBureau1() {
 		return bureau1;
 	}
-
-
-
-
 
 	public Point getHgBureau2() {
 		return hgBureau2;
 	}
 
-
-
-
-
 	public Point getBdBureau2() {
 		return bdBureau2;
 	}
-
-
-
-
 
 	public BatimentCible getBureau2() {
 		return bureau2;
 	}
 
-
-
-
-
 	public Point getHgFFood1() {
 		return hgFFood1;
 	}
-
-
-
-
 
 	public Point getBdFFood1() {
 		return bdFFood1;
 	}
 
-
-
-
-
 	public BatimentCible getFastFood1() {
 		return fastFood1;
 	}
-
-
-
-
 
 	public Point getHgFFood2() {
 		return hgFFood2;
 	}
 
-
-
-
-
 	public Point getBdFFood2() {
 		return bdFFood2;
 	}
-
-
-
-
 
 	public BatimentCible getFastFood2() {
 		return fastFood2;
 	}
 
-
-
-
-
 	public Point getHgHotel() {
 		return hgHotel;
 	}
-
-
-
-
 
 	public Point getBdHotel() {
 		return bdHotel;
 	}
 
-
-
-
-
 	public BatimentCible getHotel() {
 		return hotel;
 	}
-
-
-
-
 
 	public Point getHgBar2() {
 		return hgBar2;
 	}
 
-
-
-
-
 	public Point getBdBar2() {
 		return bdBar2;
 	}
-
-
-
-
 
 	public BatimentCible getBar2() {
 		return bar2;
 	}
 
-
-
-
-
 	public Point getHgDisco() {
 		return hgDisco;
 	}
-
-
-
-
 
 	public Point getBdDisco() {
 		return bdDisco;
 	}
 
-
-
-
-
 	public BatimentCible getDisco() {
 		return disco;
 	}
-
-
-
-
 
 	public Point getHgMairie() {
 		return hgMairie;
 	}
 
-
-
-
-
 	public Point getBdMairie() {
 		return bdMairie;
 	}
-
-
-
-
 
 	public BatimentCible getMairie() {
 		return mairie;
 	}
 
-
-
-
-
 	public Point getHgVilla() {
 		return hgVilla;
 	}
-
-
-
-
 
 	public Point getBdVilla() {
 		return bdVilla;
 	}
 
-
-
-
-
 	public BatimentCible getVilla() {
 		return villa;
 	}
-
-
-
-
-
+	
 	public Point getHgTheatre() {
 		return hgTheatre;
 	}
 
-
-
-
-
 	public Point getBdTheatre() {
 		return bdTheatre;
 	}
-
-
-
-
-
+	
 	public BatimentCible getTheatre() {
 		return theatre;
 	}
-
-
-
-
 
 	public Point getHgParc2() {
 		return hgParc2;
 	}
 
-
-
-
-
 	public Point getBdParc2() {
 		return bdParc2;
 	}
 
-
-
-
-
 	public BatimentCible getParc2() {
 		return parc2;
 	}
-
-
-
-
-
-	public HashMap<String, Route> getRoutes() {
-		return routes;
-	}
-
-	public void setRoutes(HashMap<String, Route> routes) {
-		this.routes = routes;
-	}
 	
+	/**
+	 * Search if a batiment exist or not
+	 * @param a
+	 * @return boolean
+	 */
 	public boolean Exist(BatimentCible a) {
 		if(batiments.contains(a)) {
 			return true;
@@ -827,6 +523,13 @@ public class PlanVille {
 			return false;
 		}
 	}
+	
+	/**
+	 * Return a batiment who has been search by his name
+	 * @param name
+	 * @return batiment
+	 * @throws NoSuchElementException
+	 */
 	public BatimentCible searchBat(String name) throws NoSuchElementException {
 		BatimentCible result = null;
 		for (BatimentCible b : batiments) {
