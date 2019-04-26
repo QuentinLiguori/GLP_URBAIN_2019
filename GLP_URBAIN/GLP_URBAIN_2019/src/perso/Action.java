@@ -1,16 +1,37 @@
 package perso;
 
 import ville.BatimentCible;
+
+/**
+ * Manage the action of characters
+ * @author Quentin Liguori
+ *
+ */
 public class Action {
+	
+	
 	public Action(String type) {
 		super();
 		this.type = type;
 	}	
+	
 	private String type;
 	
-	public Action() {
-		
-	}
+	/**
+	 * Action to eat, to eat the character need to bee in a place where he can eat
+	 * @param bat
+	 * @param perso
+	 * 
+	 * @see BatimentCible#getPosXporte()
+	 * @see BatimentCible#getPosYporte()
+	 * @see Personnage#getPositionX()
+	 * @see Personnage#getPositionY()
+	 * @see Personnage#getBesoin()
+	 * @see Besoin#getFaim()
+	 * @see Besoin#setFaim(int)
+	 * @see BatimentCible#getValeur()
+	 * @see Personnage#setBesoin(Besoin)
+	 */
 	public void manger(BatimentCible bat, Personnage perso) {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
@@ -19,6 +40,22 @@ public class Action {
 			perso.setBesoin(bes);	
 		}
 	}
+	
+	/**
+	 * Action to Sleep, to eat the character need to bee in a place where he can restore Energy
+	 * @param bat
+	 * @param perso
+	 * 
+	 * @see BatimentCible#getPosXporte()
+	 * @see BatimentCible#getPosYporte()
+	 * @see Personnage#getPositionX()
+	 * @see Personnage#getPositionY()
+	 * @see Personnage#getBesoin()
+	 * @see Besoin#getEnergie()
+	 * @see Besoin#setEnergie(int)
+	 * @see BatimentCible#getValeur()
+	 * @see Personnage#setBesoin(Besoin)
+	 */
 	public void dormir(BatimentCible bat, Personnage perso) {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
@@ -27,6 +64,22 @@ public class Action {
 			perso.setBesoin(bes);			
 		}
 	}
+	
+	/**
+	 * Action to have fun, to eat the character need to bee in a place where he can restore Se divertir
+	 * @param bat
+	 * @param perso
+	 * 
+	 * @see BatimentCible#getPosXporte()
+	 * @see BatimentCible#getPosYporte()
+	 * @see Personnage#getPositionX()
+	 * @see Personnage#getPositionY()
+	 * @see Personnage#getBesoin()
+	 * @see Besoin#getDivertissement()
+	 * @see Besoin#setDivertissement(int)
+	 * @see BatimentCible#getValeur()
+	 * @see Personnage#setBesoin(Besoin)
+	 */
 	public void divertir(BatimentCible bat, Personnage perso) {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
@@ -35,6 +88,22 @@ public class Action {
 			perso.setBesoin(bes);			
 		}
 	}
+	
+	/**
+	 * Action to Socialize, to eat the character need to bee in a place where he can restore social
+	 * @param bat
+	 * @param perso
+	 * 
+	 * @see BatimentCible#getPosXporte()
+	 * @see BatimentCible#getPosYporte()
+	 * @see Personnage#getPositionX()
+	 * @see Personnage#getPositionY()
+	 * @see Personnage#getBesoin()
+	 * @see Besoin#getSocial()
+	 * @see Besoin#setSocial(int)
+	 * @see BatimentCible#getValeur()
+	 * @see Personnage#setBesoin(Besoin)
+	 */
 	public void social(BatimentCible bat, Personnage perso) {
 		if(bat.getPosXporte() == perso.getPositionX() && bat.getPosYporte() == perso.getPositionY()) {
 			Besoin bes = perso.getBesoin();
@@ -43,10 +112,25 @@ public class Action {
 			perso.setBesoin(bes);			
 		}
 	}
+	
+	/**
+	 * Move the character to the building he must go
+	 * @param bat
+	 * @param perso
+	 * 
+	 * @see BatimentCible#getPosXporte()
+	 * @see BatimentCible#getPosYporte()
+	 * @see Personnage#getPositionX()
+	 * @see Personnage#getPositionY()
+	 */
 	public void deplacer(BatimentCible bat, Personnage perso) {
 		perso.setPositionX(bat.getPosXporte());
 		perso.setPositionY(bat.getPosYporte());
 	}
+	
+	/**
+	 * 
+	 */
 	public String toString() {
 		return "Action [type=" + type + "]";
 	}

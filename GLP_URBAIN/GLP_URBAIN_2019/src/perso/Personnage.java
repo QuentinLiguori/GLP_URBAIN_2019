@@ -2,6 +2,11 @@ package perso;
 
 import ville.BatimentCible;
 
+
+/**
+ * @author Quentin Liguori
+ * Contains all the data on a character
+ */
 public class Personnage {
 	private String nom;
 	private String prenom;
@@ -9,12 +14,17 @@ public class Personnage {
 	private int positionY;
 	private String sexe;
 	private int age;
-	private BatimentCible adress;
-	private Emotion emotion;
 	private Besoin besoin;
 	private Comportement comportement;
 	private ListeAction planningjournee;
 	
+	/**
+	 * Constructor of Personnage with premade Needs
+	 * @param nom
+	 * @param prenom
+	 * @param sexe
+	 * @param age
+	 */
 	public Personnage(String nom, String prenom, String sexe, int age) {
 		
 		besoin = new Besoin();
@@ -22,8 +32,22 @@ public class Personnage {
 		this.prenom = prenom;
 		this.sexe = sexe;
 		this.age = age;
+		positionX = 100;
+		positionY = 100;
 				
 	}
+	
+	/**
+	 * Constructor of Personnage with personnalized needs
+	 * @param nom
+	 * @param prenom
+	 * @param sexe
+	 * @param age
+	 * @param energy
+	 * @param divertissement
+	 * @param social
+	 * @param hunger
+	 */
 	public Personnage(String nom, String prenom, String sexe, int age, int energy, int divertissement, int social, int hunger) {
 		
 		besoin = new Besoin(hunger, energy, divertissement, social);
@@ -34,73 +58,121 @@ public class Personnage {
 				
 	}
 	
+	/**
+	 * Get the Name and the FirstName and return it in one String
+	 * @return Prenomnom
+	 */
 	public String getPrenomNom() {
 		
 		return prenom+" "+ nom;
 	}
+	
+	/**
+	 * Return the position in X
+	 * @return positionX
+	 */
 	public int getPositionX() {
 		return positionX;
 	}
 
+	/**
+	 * Set the position in X
+	 * @param positionX
+	 */
 	public void setPositionX(int positionX) {
 		this.positionX = positionX;
 	}
 
+	/**
+	 * Return the position in Y
+	 * @return positionY
+	 */
 	public int getPositionY() {
 		return positionY;
 	}
 
+	/**
+	 * Set the position in Y
+	 * @param positionY
+	 */
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
 	}
 
+	/**
+	 * Get the name of the character
+	 * @return nom
+	 */
 	public String getNom() {
-		
 		return nom;
 	}
-
+	/**
+	 * Set the name of the character
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+	/**
+	 * Get the firstname of the character
+	 * @return prenom
+	 */
 	public String getPrenom() {
 		return prenom;
 	}
-
+	
+	/**
+	 * Set the firstname of the character
+	 * @param prenom
+	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
+	
+	/**
+	 * Get the sex of the character
+	 * @return sexe
+	 */
 	public String getSexe() {
 		return sexe;
 	}
-
+	
+	/**
+	 * Set the sex of the character
+	 * @param sexe
+	 */
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
 
+	/**
+	 * Get the age of the character
+	 * @return age
+	 */
 	public int getAge() {
 		return age;
 	}
-
+	
+	/**
+	 * Set the age of the character
+	 * @param age
+	 */
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 	
-
-	public Emotion getEmotion() {
-		return emotion;
-	}
-
-	public void setEmotion(Emotion emotion) {
-		this.emotion = emotion;
-	}
-
+	/**
+	 * Get the needs of the character
+	 * @return besoin
+	 */
 	public Besoin getBesoin() {
 		return besoin;
 	}
-
+	
+	/**
+	 * Set the needs of the character
+	 * @param besoin
+	 */
 	public void setBesoin(Besoin besoin) {
 		this.besoin = besoin;
 	}
