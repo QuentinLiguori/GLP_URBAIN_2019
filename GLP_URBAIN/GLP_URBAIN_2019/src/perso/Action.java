@@ -7,16 +7,40 @@ import ville.BatimentCible;
  * @author Quentin Liguori
  *
  */
-public class Action {
-	
-	
+public class Action {	
+	private String type;
+	private String batiment;
+	private Personnage personnage;
+	public Action(String type,String batiment) {
+		super();
+		this.type = type;
+		this.batiment = batiment;
+	}
+	public String getBatiment() {
+		return batiment;
+	}
+	public void setBatiment(String batiment) {
+		this.batiment = batiment;
+	}
+	public Personnage getPersonnage() {
+		return personnage;
+	}
+	public void setPersonnage(Personnage personnage) {
+		this.personnage = personnage;
+	}
 	public Action(String type) {
 		super();
 		this.type = type;
 	}	
-	
-	private String type;
-	
+	public Action() {
+		super();
+	}	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	/**
 	 * Action to eat, to eat the character need to bee in a place where he can eat
 	 * @param bat

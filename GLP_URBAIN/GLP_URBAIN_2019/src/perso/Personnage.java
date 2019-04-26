@@ -1,7 +1,9 @@
 package perso;
 
-import ville.BatimentCible;
+import java.util.Stack;
 
+import ihm.MainWindow;
+import ville.BatimentCible;
 
 /**
  * @author Quentin Liguori
@@ -17,7 +19,9 @@ public class Personnage {
 	private Besoin besoin;
 	private Comportement comportement;
 	private ListeAction planningjournee;
-	
+	public  Stack<Action> stack = new Stack<Action>();
+	public boolean occuped;
+
 	/**
 	 * Constructor of Personnage with premade Needs
 	 * @param nom
@@ -48,16 +52,31 @@ public class Personnage {
 	 * @param social
 	 * @param hunger
 	 */
-	public Personnage(String nom, String prenom, String sexe, int age, int energy, int divertissement, int social, int hunger) {
+	public Personnage(String nom, String prenom, String sexe, int age, int energy, int divertissement, int social, int hunger, boolean occuped) {
 		
 		besoin = new Besoin(hunger, energy, divertissement, social);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;
 		this.age = age;
+		occuped = false;
 				
 	}
-	
+	public Stack<Action> getStack() {
+		return stack;
+	}
+
+	public void setStack(Stack<Action> stack) {
+		this.stack = stack;
+	}
+	public void setOccuped(boolean occuped) {
+		this.occuped = occuped;
+	}
+
+	public boolean isOccuped() {
+		return occuped;
+	}
+
 	/**
 	 * Get the Name and the FirstName and return it in one String
 	 * @return Prenomnom
@@ -192,5 +211,29 @@ public class Personnage {
 	public void setPlanningjournee(ListeAction planningjournee) {
 		this.planningjournee = planningjournee;
 	}
-	
+	public String affDay() {
+		stack = planningjournee.createDay();
+		String day = "";
+		Action act;
+		while(planningjournee.see()!= null) {
+			act = planningjournee.see();
+			day = act.toString();
+		}
+		return day;
+	}
+	public boolean searchByNamePerso(String name) {
+		boolean result = false;
+        for (int index = 0; index < MainWindow.occupedPerso.size(); index++) {
+                Personnage perso = MainWindow.occupedPerso.get(index);
+                if (perso.getPrenomNom().equals(name)) {
+    				result = true;
+    			}
+        }
+        if (result == false) {
+			System.out.println("Perso " + name + " not occuped.");
+			return result;
+		} else {
+			return result;
+		}
+	}
 }
