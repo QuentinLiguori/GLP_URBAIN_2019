@@ -72,7 +72,7 @@ public class MainWindow implements Runnable, ActionListener{
 		ville = new PlanVille();
 		menu = new Menu();
 		menu.getJouer().addActionListener(new Acceuil());
-		act = new Action();
+		act = new Action(null);
 		persoCreation = new PersoCreation();
 		persoCreation.getJouer().addActionListener(new Jouer());
 		
@@ -109,7 +109,7 @@ public class MainWindow implements Runnable, ActionListener{
 		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("Urbain");
-		mainFrame.setContentPane(menu.getMenu()); 		
+		mainFrame.setContentPane(menu); 		
 		mainFrame.setSize(1870,980);
 		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);

@@ -2,8 +2,13 @@ package ihm;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -14,9 +19,9 @@ import javax.swing.JPanel;
  */
 public class Menu extends JPanel implements ActionListener, Runnable{
 	
+	private Image img;
 	private JButton jouer;
 	private JButton quitter;
-	private JPanel menu;
 	
 	/**
 	 * Constructor of Menu initialize the menu of the graphic interface
@@ -28,7 +33,6 @@ public class Menu extends JPanel implements ActionListener, Runnable{
 	 */
 	public Menu() {
 		
-		menu = new JPanel();
 		jouer = new JButton();
 		jouer.setText("Jouer");
 		jouer.addActionListener(this);
@@ -37,28 +41,13 @@ public class Menu extends JPanel implements ActionListener, Runnable{
 		quitter.setText("Quitter");
 		quitter.addActionListener(this);
 		
-		menu.setLayout(new FlowLayout(FlowLayout.CENTER,100,400));
+		this.setLayout(new FlowLayout(FlowLayout.CENTER,100,400));
 		jouer.setPreferredSize(new Dimension(150, 73));
 		quitter.setPreferredSize(new Dimension(150, 73));
-		menu.add(jouer);
-		menu.add(quitter);
+		this.add(jouer);
+		this.add(quitter);
 	}
 	
-	/**
-	 * Return JPanel of the menu pf the graphic interface
-	 * @return menu
-	 */
-	public JPanel getMenu() {
-		return menu;
-	}
-	
-	/**
-	 * Set the Menu of the graphic interface
-	 * @param menu
-	 */
-	public void setMenu(JPanel menu) {
-		this.menu = menu;
-	}
 	
 	/**
 	 * Return the JButton to play on the menu
@@ -90,6 +79,16 @@ public class Menu extends JPanel implements ActionListener, Runnable{
 	 */
 	public void setQuitter(JButton quitter) {
 		this.quitter = quitter;
+	}
+	
+	public void paintComponent(Graphics g) {
+		try {
+			this.img = ImageIO.read(new File("pictures/logo.png"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		super.paintComponent(g);
+		g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 	}
 
 	/**
