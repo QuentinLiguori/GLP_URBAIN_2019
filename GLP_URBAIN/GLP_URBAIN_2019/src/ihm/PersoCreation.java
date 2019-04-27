@@ -188,7 +188,7 @@ public class PersoCreation implements ActionListener{
 		
 		persCreationPane = new JPanel();
 		persCreationPane.setLayout(new GridLayout(1, 2));
-		persoCrea = new JLabel("CrÃ©ation d'un personnage");
+		persoCrea = new JLabel("Création d'un personnage");
 		persoCrea.setFont(font);
 		main = new JPanel();
 		
@@ -205,11 +205,13 @@ public class PersoCreation implements ActionListener{
 		nom.setText("Nom");
 		nom.setFont(font2);
 		newnom = new JTextField();
+		newnom.setFont(font2);
 				
 		prenom = new JLabel();
 		prenom.setText("Prenom");
 		prenom.setFont(font2);
 		newprenom = new JTextField();
+		newprenom.setFont(font2);
 				
 		age = new JLabel();
 		age.setText("Age");
@@ -240,7 +242,7 @@ public class PersoCreation implements ActionListener{
 		
 		creer = new JButton("Creer");
 		creer.addActionListener(this);
-		aleatoire = new JButton("Creer personnage alÃ©atoirment");
+		aleatoire = new JButton("Creer personnage aléatoirment");
 		aleatoire.addActionListener(this);
 		bottomRight = new JPanel();
 		bottomRight.add(creer);
